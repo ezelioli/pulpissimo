@@ -40,6 +40,7 @@ dependencies:
   udma_camera:            { git: "git@iis-git.ee.ethz.ch:pulp-io/udma_camera.git", rev: "devel" }
   udma_filter:            { git: "git@iis-git.ee.ethz.ch:pulp-io/udma_filter.git", rev: "devel" }
   udma_external_per:      { git: "https://github.com/pulp-platform/udma_external_per.git", version: 1.0.3 }
+  dvsi:                   { git: "git@iis-git.ee.ethz.ch:pulp-io/dvsi.git", rev: "devel" }
   hwpe-mac-engine:        { git: "https://github.com/pulp-platform/hwpe-mac-engine.git", version: 1.3.3 }
   riscv-dbg:              { git: "https://github.com/pulp-platform/riscv-dbg.git", version: 0.2.0 }
   register_interface:     { git: "https://github.com/pulp-platform/register_interface.git", version: 0.2.1 }
@@ -72,6 +73,7 @@ sources:
   # udma_subsystem
   - files: 
       - rtl/udma_subsystem/udma_subsystem.sv
+      - rtl/udma_subsystem/udma_cfg_pkg.sv
   # fc
   - target: rtl
     defines:

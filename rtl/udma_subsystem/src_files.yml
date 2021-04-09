@@ -5,4 +5,5 @@ udma_subsystem:
   ]
   files: [
     udma_subsystem.sv,
+    udma_cfg_pkg.sv,
   ]

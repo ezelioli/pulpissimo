@@ -10,7 +10,17 @@
 
 `include "pulp_soc_defines.sv"
 
-module soc_peripherals #(
+module soc_peripherals 
+    import uart_pkg::*;
+    import i2c_pkg::i2c_to_pad_t;
+    import i2c_pkg::pad_to_i2c_t;
+    import qspi_pkg::pad_to_qspi_t;
+    import qspi_pkg::qspi_to_pad_t;
+    import cpi_pkg::pad_to_cpi_t;
+    import dvsi_pkg::dvsi_to_pad_t;
+    import dvsi_pkg::pad_to_dvsi_t;
+    import hyper_pkg::*;
+#(
     parameter MEM_ADDR_WIDTH = 13,
     parameter APB_ADDR_WIDTH = 32,
     parameter APB_DATA_WIDTH = 32,
@@ -99,10 +109,10 @@ module soc_peripherals #(
     input  logic                       cam_vsync_i,
 
     //UART
-    // output logic [N_UART-1:0]          uart_tx,
-    // input  logic [N_UART-1:0]          uart_rx,
-    output logic           uart_tx,
-    input  logic           uart_rx,
+    output logic [N_UART-1:0]          uart_tx,
+    input  logic [N_UART-1:0]          uart_rx,
+    // output logic           uart_tx,
+    // input  logic           uart_rx,
 
 
     //I2C
@@ -138,6 +148,40 @@ module soc_peripherals #(
     output logic                 [3:0] sddata_o,
     input  logic                 [3:0] sddata_i,
     output logic                 [3:0] sddata_oen_o,
+
+    /* DVSI */
+    output logic                             dvsi_asa_o       ,  
+    output logic                             dvsi_are_o       ,  
+    output logic                             dvsi_asy_o       ,  
+    output logic                             dvsi_ynrst_o     ,  
+    output logic                             dvsi_yclk_o      ,  
+    output logic                             dvsi_sxy_o       ,  
+    output logic                             dvsi_xclk_o      ,  
+    output logic                             dvsi_xnrst_o     ,  
+    output logic                             dvsi_cfg0_o      ,  
+    output logic                             dvsi_cfg1_o      ,  
+    output logic                             dvsi_cfg2_o      ,  
+    output logic                             dvsi_cfg3_o      ,  
+    output logic                             dvsi_cfg4_o      ,  
+    output logic                             dvsi_cfg5_o      ,  
+    output logic                             dvsi_cfg6_o      ,  
+    output logic                             dvsi_cfg7_o      ,  
+    input  logic                             dvsi_xydata0_i   ,
+    input  logic                             dvsi_xydata1_i   ,
+    input  logic                             dvsi_xydata2_i   ,
+    input  logic                             dvsi_xydata3_i   ,
+    input  logic                             dvsi_xydata4_i   ,
+    input  logic                             dvsi_xydata5_i   ,
+    input  logic                             dvsi_xydata6_i   ,
+    input  logic                             dvsi_xydata7_i   ,
+    input  logic                             dvsi_on0_i       ,
+    input  logic                             dvsi_on1_i       ,
+    input  logic                             dvsi_on2_i       ,
+    input  logic                             dvsi_on3_i       ,
+    input  logic                             dvsi_off0_i      ,
+    input  logic                             dvsi_off1_i      ,
+    input  logic                             dvsi_off2_i      ,
+    input  logic                             dvsi_off3_i      ,
 
 
     output logic [EVNT_WIDTH-1:0]      cl_event_data_o,
@@ -194,6 +238,25 @@ module soc_peripherals #(
 
     logic s_timer_in_lo_event;
     logic s_timer_in_hi_event;
+
+    uart_to_pad_t s_uart_to_pad = {uart_tx, 1'b1};  /// UART_TX_OE ?? //
+    pad_to_uart_t s_pad_to_uart = {uart_rx};
+
+    i2c_to_pad_t s_i2c_to_pad   = {i2c_sda_o, i2c_sda_oe_o, i2c_scl_o, i2c_scl_oe_o};
+    pad_to_i2c_t s_pad_to_i2c   = {i2c_sda_i, i2c_scl_i};
+
+    qspi_to_pad_t s_qspi_to_pad = {spi_sdo_o[0], spi_oen_o[0], spi_sdo_o[1], spi_oen_o[1], spi_sdo_o[2], spi_oen_o[2], spi_sdo_o[3], spi_oen_o[3], spi_clk_o};
+    pad_to_qspi_t s_pad_to_qspi = {spi_sdi[0], spi_sdi[1], spi_sdi[2], spi_sdi[3]};
+
+    pad_to_cpi_t s_pad_to_cpi   = {cam_clk_i, cam_hsync_i, cam_vsync_i, cam_data_i};
+
+    dvsi_to_pad_t s_dvsi_to_pad = {dvsi_asa_o, dvsi_are_o, dvsi_asy_o, dvsi_ynrst_o, dvsi_yclk_o. dvsi_sxy_o, dvsi_xclk_o, dvsi_xnrst_o,
+                                   dvsi_cfg0_o, dvsi_cfg1_o, dvsi_cfg2_o, dvsi_cfg3_o, dvsi_cfg4_o, dvsi_cfg5_o, dvsi_cfg6_o, dvsi_cfg7_o};
+    pad_to_dvsi_t s_pad_to_dvsi = {dvsi_xydata0_i, dvsi_xydata1_i, dvsi_xydata2_i, dvsi_xydata3_i, dvsi_xydata4_i, dvsi_xydata5_i, dvsi_xydata6_i, dvsi_xydata7_i,
+                                   dvsi_on0_i, dvsi_on1_i, dvsi_on2_i, dvsi_on3_i, dvsi_off0_i, dvsi_off1_i, dvsi_off2_i, dvsi_off3_i};
+
+    hyper_to_pad_t s_hyper_to_pad = {};
+    pad_to_hyper_t s_pad_to_hyper = {};
 
     assign s_events[UDMA_EVENTS-1:0]  = s_udma_events;
     assign s_events[135]              = s_adv_timer_events[0];
@@ -382,7 +445,7 @@ module soc_peripherals #(
     // ╚██████╔╝██████╔╝██║ ╚═╝ ██║██║  ██║    ███████║╚██████╔╝██████╔╝███████║   ██║   ███████║ //
     //  ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝    ╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝   ╚══════╝ //
     ////////////////////////////////////////////////////////////////////////////////////////////////
-
+    /*
     udma_subsystem #(
         .APB_ADDR_WIDTH     ( APB_ADDR_WIDTH       ),
         .L2_ADDR_WIDTH      ( MEM_ADDR_WIDTH       ),
@@ -468,6 +531,71 @@ module soc_peripherals #(
         .i2c_sda_o        ( i2c_sda_o            ),
         .i2c_sda_oe       ( i2c_sda_oe_o         )
 
+    );
+    */
+
+    udma_subsystem #(
+        .APB_ADDR_WIDTH(APB_ADDR_WIDTH)
+    ) i_udma (
+        .sys_resetn_i     ( rst_ni               ),
+        .sys_clk_i        ( clk_i                ),
+        .periph_clk_i     ( periph_clk_i         ),
+
+        .L2_ro_req_o      ( l2_tx_master.req     ),
+        .L2_ro_gnt_i      ( l2_tx_master.gnt     ),
+        .L2_ro_wen_o      ( l2_tx_master.wen     ),
+        .L2_ro_addr_o     ( l2_tx_master.add     ),
+        .L2_ro_wdata_o    ( l2_tx_master.wdata   ),
+        .L2_ro_be_o       ( l2_tx_master.be      ),
+        .L2_ro_rdata_i    ( l2_tx_master.r_rdata ),
+        .L2_ro_rvalid_i   ( l2_tx_master.r_valid ),
+
+        .L2_wo_req_o      ( l2_rx_master.req     ),
+        .L2_wo_gnt_i      ( l2_rx_master.gnt     ),
+        .L2_wo_wen_o      ( l2_rx_master.wen     ),
+        .L2_wo_addr_o     ( l2_rx_master.add     ),
+        .L2_wo_wdata_o    ( l2_rx_master.wdata   ),
+        .L2_wo_be_o       ( l2_rx_master.be      ),
+        .L2_wo_rdata_i    ( l2_rx_master.r_rdata ),
+        .L2_wo_rvalid_i   ( l2_rx_master.r_valid ),
+
+        .dft_test_mode_i  ( dft_test_mode_i      ),
+        .dft_cg_enable_i  ( 1'b0                 ),
+
+        .udma_apb_paddr   ( s_udma_bus.paddr     ),
+        .udma_apb_pwdata  ( s_udma_bus.pwdata    ),
+        .udma_apb_pwrite  ( s_udma_bus.pwrite    ),
+        .udma_apb_psel    ( s_udma_bus.psel      ),
+        .udma_apb_penable ( s_udma_bus.penable   ),
+        .udma_apb_prdata  ( s_udma_bus.prdata    ),
+        .udma_apb_pready  ( s_udma_bus.pready    ),
+        .udma_apb_pslverr ( s_udma_bus.pslverr   ),
+
+        .events_o         ( s_udma_events        ),   /// TO BE CHECKED ////
+
+        .event_valid_i    ( s_pr_event_valid     ),
+        .event_data_i     ( s_pr_event_data      ),
+        .event_ready_o    ( s_pr_event_ready     ),
+
+        .udma_stream_req  (                      ),   /// SIGNALS NOT USED ?? ///
+        .udma_stream_rsp  (                      ),
+
+        .uart_to_pad      ( s_uart_to_pad        ),
+        .pad_to_uart      ( s_pad_to_uart        ),
+
+        .i2c_to_pad       ( s_i2c_to_pad         ),
+        .pad_to_i2c       ( s_pad_to_i2c         ),
+
+        .qspi_to_pad      ( s_qspi_to_pad        ),
+        .pad_to_qspi      ( s_pad_to_qspi        ),
+
+        .pad_to_cpi       ( s_pad_to_cpi         ),
+
+        .dvsi_to_pad      ( s_dvsi_to_pad        ),  /// TO BE MATCHED WITH EXTERNAL SIGNALS ///
+        .pad_to_dvsi      ( s_pad_to_dvsi        ),
+
+        .hyper_to_pad     ( s_hyper_to_pad       ),  // WHAT IS HYPERBUS/HYPERRAM? ///
+        .pad_to_hyper     ( s_pad_to_hyper       )
     );
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

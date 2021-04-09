@@ -36,6 +36,7 @@ udma_subsystem:
   ]
   files: [
     rtl/udma_subsystem/udma_subsystem.sv,
+    rtl/udma_subsystem/udma_cfg_pkg.sv,
   ]
 
 fc:
