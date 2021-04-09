@@ -46,3 +46,29 @@ module pad_functional_pu
   );
 
 endmodule
+
+module pad_functional_input
+(
+   output logic             O,
+   input  logic             PAD
+);
+
+  IBUF ibuf_i (
+    .O ( O    ),
+    .I ( PAD  )
+  );
+
+endmodule
+
+module pad_functional_output
+(
+  input logic       I,
+  output logic      PAD
+);
+
+ OBUF obuf_i (
+  .I(I),
+  .O(PAD)
+ );
+
+endmodule

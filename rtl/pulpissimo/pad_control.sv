@@ -77,6 +77,40 @@ module pad_control #(
         output logic             cam_hsync_o          ,
         output logic             cam_vsync_o          ,
 
+        // DVSI INTERFACE
+        input  logic             dvsi_asa_i           ,
+        input  logic             dvsi_are_i           ,
+        input  logic             dvsi_asy_i           ,
+        input  logic             dvsi_ynrst_i         ,  
+        input  logic             dvsi_yclk_i          , 
+        input  logic             dvsi_sxy_i           ,
+        input  logic             dvsi_xclk_i          , 
+        input  logic             dvsi_xnrst_i         ,  
+        input  logic             dvsi_cfg0_i          , 
+        input  logic             dvsi_cfg1_i          , 
+        input  logic             dvsi_cfg2_i          , 
+        input  logic             dvsi_cfg3_i          , 
+        input  logic             dvsi_cfg4_i          , 
+        input  logic             dvsi_cfg5_i          , 
+        input  logic             dvsi_cfg6_i          , 
+        input  logic             dvsi_cfg7_i          ,
+        output logic             dvsi_xydata0_o       ,
+        output logic             dvsi_xydata1_o       ,
+        output logic             dvsi_xydata2_o       ,
+        output logic             dvsi_xydata3_o       ,
+        output logic             dvsi_xydata4_o       ,
+        output logic             dvsi_xydata5_o       ,
+        output logic             dvsi_xydata6_o       ,
+        output logic             dvsi_xydata7_o       ,
+        output logic             dvsi_on0_o           ,
+        output logic             dvsi_on1_o           ,
+        output logic             dvsi_on2_o           ,
+        output logic             dvsi_on3_o           ,
+        output logic             dvsi_off0_o          ,
+        output logic             dvsi_off1_o          ,
+        output logic             dvsi_off2_o          ,
+        output logic             dvsi_off3_o          ,
+
         // TIMER
         input  logic [3:0]       timer0_i             ,
         input  logic [3:0]       timer1_i             ,
@@ -120,6 +154,23 @@ module pad_control #(
         output logic             out_i2s0_ws_o    ,
         output logic             out_i2s0_sdi_o   ,
         output logic             out_i2s1_sdi_o   ,
+        /* DVSI */
+        output logic             out_dvsi_asa_o   ,
+        output logic             out_dvsi_are_o   ,
+        output logic             out_dvsi_asy_o   ,
+        output logic             out_dvsi_ynrst_o ,
+        output logic             out_dvsi_yclk_o  ,
+        output logic             out_dvsi_sxy_o   ,
+        output logic             out_dvsi_xclk_o  ,
+        output logic             out_dvsi_xnrst_o ,
+        output logic             out_dvsi_cfg0_o  ,
+        output logic             out_dvsi_cfg1_o  ,
+        output logic             out_dvsi_cfg2_o  ,
+        output logic             out_dvsi_cfg3_o  ,
+        output logic             out_dvsi_cfg4_o  ,
+        output logic             out_dvsi_cfg5_o  ,
+        output logic             out_dvsi_cfg6_o  ,
+        output logic             out_dvsi_cfg7_o  ,
 
         // PAD INPUTS
         input logic              in_spim_sdio0_i  ,
@@ -129,12 +180,12 @@ module pad_control #(
         input logic              in_spim_csn0_i   ,
         input logic              in_spim_csn1_i   ,
         input logic              in_spim_sck_i    ,
-        input logic              in_sdio_clk_i        ,
-        input logic              in_sdio_cmd_i        ,
-        input logic              in_sdio_data0_i      ,
-        input logic              in_sdio_data1_i      ,
-        input logic              in_sdio_data2_i      ,
-        input logic              in_sdio_data3_i      ,
+        input logic              in_sdio_clk_i    ,
+        input logic              in_sdio_cmd_i    ,
+        input logic              in_sdio_data0_i  ,
+        input logic              in_sdio_data1_i  ,
+        input logic              in_sdio_data2_i  ,
+        input logic              in_sdio_data3_i  ,
         input logic              in_uart_rx_i     ,
         input logic              in_uart_tx_i     ,
         input logic              in_cam_pclk_i    ,
@@ -154,6 +205,23 @@ module pad_control #(
         input logic              in_i2s0_ws_i     ,
         input logic              in_i2s0_sdi_i    ,
         input logic              in_i2s1_sdi_i    ,
+        /* DVSI */
+        input logic              in_dvsi_xydata0_i,
+        input logic              in_dvsi_xydata1_i,
+        input logic              in_dvsi_xydata2_i,
+        input logic              in_dvsi_xydata3_i,
+        input logic              in_dvsi_xydata4_i,
+        input logic              in_dvsi_xydata5_i,
+        input logic              in_dvsi_xydata6_i,
+        input logic              in_dvsi_xydata7_i,
+        input logic              in_dvsi_on0_i    ,
+        input logic              in_dvsi_on1_i    ,
+        input logic              in_dvsi_on2_i    ,
+        input logic              in_dvsi_on3_i    ,
+        input logic              in_dvsi_off0_i   ,
+        input logic              in_dvsi_off1_i   ,
+        input logic              in_dvsi_off2_i   ,
+        input logic              in_dvsi_off3_i   ,
 
         // OUTPUT ENABLE
         output logic             oe_spim_sdio0_o  ,
@@ -187,7 +255,26 @@ module pad_control #(
         output logic             oe_i2s0_sck_o    ,
         output logic             oe_i2s0_ws_o     ,
         output logic             oe_i2s0_sdi_o    ,
-        output logic             oe_i2s1_sdi_o
+        output logic             oe_i2s1_sdi_o    
+        /* DVSI */
+        /*
+        output logic             oe_dvsi_asa_o    ,
+        output logic             oe_dvsi_are_o    ,
+        output logic             oe_dvsi_asy_o    ,
+        output logic             oe_dvsi_ynrst_o  ,
+        output logic             oe_dvsi_yclk_o   ,
+        output logic             oe_dvsi_sxy_o    ,
+        output logic             oe_dvsi_xclk_o   ,
+        output logic             oe_dvsi_xnrst_o  ,
+        output logic             oe_dvsi_cfg0_o   ,
+        output logic             oe_dvsi_cfg1_o   ,
+        output logic             oe_dvsi_cfg2_o   ,
+        output logic             oe_dvsi_cfg3_o   ,
+        output logic             oe_dvsi_cfg4_o   ,
+        output logic             oe_dvsi_cfg5_o   ,
+        output logic             oe_dvsi_cfg6_o   ,
+        output logic             oe_dvsi_cfg7_o
+        */       
     );
 
 
@@ -239,6 +326,26 @@ module pad_control #(
    assign oe_i2s0_ws_o     = (pad_mux_i[36] == 2'b00) ? i2s_slave_ws_oe     : ((pad_mux_i[36] == 2'b01) ? gpio_dir_i[29] : ((pad_mux_i[36] == 2'b10) ? s_alt2        : s_alt3 ));
    assign oe_i2s0_sdi_o    = (pad_mux_i[37] == 2'b00) ? 1'b0                : ((pad_mux_i[37] == 2'b01) ? gpio_dir_i[30] : ((pad_mux_i[37] == 2'b10) ? s_alt2        : s_alt3 ));
    assign oe_i2s1_sdi_o    = (pad_mux_i[38] == 2'b00) ? 1'b0                : ((pad_mux_i[38] == 2'b01) ? gpio_dir_i[31] : ((pad_mux_i[38] == 2'b10) ? s_alt2        : s_alt3 ));
+   /* DVSI */
+   /*
+   assign oe_dvsi_asa_o      = 1'b0;
+   assign oe_dvsi_are_o      = 1'b0;
+   assign oe_dvsi_asy_o      = 1'b0;
+   assign oe_dvsi_ynrst_o    = 1'b0;
+   assign oe_dvsi_yclk_o     = 1'b0;
+   assign oe_dvsi_sxy_o      = 1'b0;
+   assign oe_dvsi_xclk_o     = 1'b0;
+   assign oe_dvsi_xnrst_o    = 1'b0;
+   assign oe_dvsi_cfg0_o     = 1'b0;
+   assign oe_dvsi_cfg1_o     = 1'b0;
+   assign oe_dvsi_cfg2_o     = 1'b0;
+   assign oe_dvsi_cfg3_o     = 1'b0;
+   assign oe_dvsi_cfg4_o     = 1'b0;
+   assign oe_dvsi_cfg5_o     = 1'b0;
+   assign oe_dvsi_cfg6_o     = 1'b0;
+   assign oe_dvsi_cfg7_o     = 1'b0;
+   */
+
 
    /////////////////////////////////////////////////////////////////////////////////////////////
    // DATA OUTPUT
@@ -275,6 +382,23 @@ module pad_control #(
    assign out_i2s0_ws_o    = (pad_mux_i[36] == 2'b00) ? i2s_slave_ws_i     : ((pad_mux_i[36] == 2'b01) ? gpio_out_i[29] : ((pad_mux_i[36] == 2'b10) ? s_alt2         : s_alt3 ));
    assign out_i2s0_sdi_o   = (pad_mux_i[37] == 2'b00) ? 1'b0               : ((pad_mux_i[37] == 2'b01) ? gpio_out_i[30] : ((pad_mux_i[37] == 2'b10) ? s_alt2         : s_alt3 ));
    assign out_i2s1_sdi_o   = (pad_mux_i[38] == 2'b00) ? 1'b0               : ((pad_mux_i[38] == 2'b01) ? gpio_out_i[31] : ((pad_mux_i[38] == 2'b10) ? s_alt2         : s_alt3 ));
+   /* DVSI */
+   assign out_dvsi_asa_o   = dvsi_asa_i   ;
+   assign out_dvsi_are_o   = dvsi_are_i   ;
+   assign out_dvsi_asy_o   = dvsi_asy_i   ;
+   assign out_dvsi_ynrst_o = dvsi_ynrst_i ;
+   assign out_dvsi_yclk_o  = dvsi_yclk_i  ;
+   assign out_dvsi_sxy_o   = dvsi_sxy_i   ;
+   assign out_dvsi_xclk_o  = dvsi_xclk_i  ;
+   assign out_dvsi_xnrst_o = dvsi_xnrst_i ;
+   assign out_dvsi_cfg0_o  = dvsi_cfg0_i  ;
+   assign out_dvsi_cfg1_o  = dvsi_cfg1_i  ;
+   assign out_dvsi_cfg2_o  = dvsi_cfg2_i  ;
+   assign out_dvsi_cfg3_o  = dvsi_cfg3_i  ;
+   assign out_dvsi_cfg4_o  = dvsi_cfg4_i  ;
+   assign out_dvsi_cfg5_o  = dvsi_cfg5_i  ;
+   assign out_dvsi_cfg6_o  = dvsi_cfg6_i  ;
+   assign out_dvsi_cfg7_o  = dvsi_cfg7_i  ;
 
    /////////////////////////////////////////////////////////////////////////////////////////////
    // DATA INPUT
@@ -358,6 +482,24 @@ module pad_control #(
    assign gpio_in_o[29] = (pad_mux_i[36] == 2'b01) ? in_i2s0_ws_i    : 1'b0 ;
    assign gpio_in_o[30] = (pad_mux_i[37] == 2'b01) ? in_i2s0_sdi_i   : 1'b0 ;
    assign gpio_in_o[31] = (pad_mux_i[38] == 2'b01) ? in_i2s1_sdi_i   : 1'b0 ;
+
+   /* DVSI */
+   assign dvsi_xydata0_o = in_dvsi_xydata0_i ;
+   assign dvsi_xydata1_o = in_dvsi_xydata1_i ;
+   assign dvsi_xydata2_o = in_dvsi_xydata2_i ;
+   assign dvsi_xydata3_o = in_dvsi_xydata3_i ;
+   assign dvsi_xydata4_o = in_dvsi_xydata4_i ;
+   assign dvsi_xydata5_o = in_dvsi_xydata5_i ;
+   assign dvsi_xydata6_o = in_dvsi_xydata6_i ;
+   assign dvsi_xydata7_o = in_dvsi_xydata7_i ;
+   assign dvsi_on0_o     = in_dvsi_on0_i     ;
+   assign dvsi_on1_o     = in_dvsi_on1_i     ;
+   assign dvsi_on2_o     = in_dvsi_on2_i     ;
+   assign dvsi_on3_o     = in_dvsi_on3_i     ;
+   assign dvsi_off0_o    = in_dvsi_off0_i    ;
+   assign dvsi_off1_o    = in_dvsi_off1_i    ;
+   assign dvsi_off2_o    = in_dvsi_off2_i    ;
+   assign dvsi_off3_o    = in_dvsi_off3_i    ;
 
    // PAD CFG mux between default and GPIO
    assign pad_cfg_o[0]  = (pad_mux_i[0]  == 2'b01) ? gpio_cfg_i[0]  : pad_cfg_i[0];
