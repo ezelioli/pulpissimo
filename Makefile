@@ -50,13 +50,13 @@ BENDER_BUILD_DIR = sim
 ifdef BENDER
 checkout: bender
 	./bender update
-	ln -s ../../.bender/git/checkouts/$(shell basename .bender/git/checkouts/tbtools*)/dpi_models/ rtl/tb/dpi_models
-	ln -s ../../.bender/git/checkouts/$(shell basename .bender/git/checkouts/tbtools*)/tb_driver/ rtl/tb/tb_driver
+	$(MAKE) scripts
+	cd rtl/tb && $(MAKE) alla
 else
 checkout:
 	./update-ips
-endif
 	$(MAKE) scripts
+endif
 
 # generic clean and build targets for the platform
 .PHONY: clean
