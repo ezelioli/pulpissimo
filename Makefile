@@ -50,11 +50,8 @@ BENDER_BUILD_DIR = sim
 ifdef BENDER
 checkout: bender
 	./bender update
-	ln -s ../../.bender/git/checkouts/tbtools-7d12752938c4c721/dpi_models/ rtl/tb/dpi_models
-	ln -s ../../.bender/git/checkouts/tbtools-7d12752938c4c721/tb_driver/ rtl/tb/tb_driver
-	#TBTOOLS_DIR="$(shell basename .bender/git/checkouts/tbtools*)"
-	#ln -s ../../.bender/git/checkouts/$(TBTOOLS_DIR)/dpi_models/ rtl/tb/dpi_models
-	#ln -s ../../.bender/git/checkouts/$(TBTOOLS_DIR)/tb_driver/ rtl/tb/tb_driver
+	ln -s ../../.bender/git/checkouts/$(shell basename .bender/git/checkouts/tbtools*)/dpi_models/ rtl/tb/dpi_models
+	ln -s ../../.bender/git/checkouts/$(shell basename .bender/git/checkouts/tbtools*)/tb_driver/ rtl/tb/tb_driver
 else
 checkout:
 	./update-ips
