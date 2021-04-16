@@ -53,13 +53,9 @@ ifdef BENDER
 checkout: bender
 	./bender update
 	touch Bender.lock
-<<<<<<< HEAD
 	$(MAKE) scripts
 	cd rtl/tb && $(MAKE) alla
-	
-=======
 
->>>>>>> 95852932d5c15b4c97c85913b0108264c09af955
 Bender.lock: bender
 	./bender update
 	touch Bender.lock
