@@ -8,5 +8,6 @@ export SLOW_CLK_PERIOD_NS=30517
 export INTERLEAVED_BANK_SIZE=28672
 #Must also change the localparam 'L2_BANK_SIZE_PRI' in pulp_soc.sv accordingly
 export PRIVATE_BANK_SIZE=8192
+export GENERIC_BANK_SIZE=4096
 $(info Setting environment variables for $(BOARD) board)
 

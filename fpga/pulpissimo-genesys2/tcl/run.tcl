@@ -44,6 +44,7 @@ read_ip $FPGA_IPS/xilinx_clk_mngr/ip/xilinx_clk_mngr.xci
 read_ip $FPGA_IPS/xilinx_slow_clk_mngr/ip/xilinx_slow_clk_mngr.xci
 read_ip $FPGA_IPS/xilinx_interleaved_ram/ip/xilinx_interleaved_ram.xci
 read_ip $FPGA_IPS/xilinx_private_ram/ip/xilinx_private_ram.xci
+read_ip $FPGA_IPS/xilinx_generic_ram/ip/xilinx_generic_ram.xci
 
 # Add wrappers and xilinx specific techcells
 add_files -norecurse $FPGA_RTL/fpga_clk_gen.sv
@@ -53,6 +54,7 @@ add_files -norecurse $FPGA_RTL/fpga_private_ram.sv
 add_files -norecurse $FPGA_RTL/fpga_bootrom.sv
 add_files -norecurse $FPGA_RTL/pad_functional_xilinx.sv
 add_files -norecurse $FPGA_RTL/pulp_clock_gating_xilinx.sv
+add_files -norecurse $FPGA_RTL/fpga_generic_ram.sv
 
 
 # set pulpissimo as top

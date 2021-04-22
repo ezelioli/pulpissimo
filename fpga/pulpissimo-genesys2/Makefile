@@ -31,10 +31,12 @@ clean-clk: ## Removes all Clocking Wizard IP outputs
 ram: ## Synthesizes the Xilinx Block Memory Generator IPs for PULPissimo's L2 Ram
 	$(MAKE) -C ips/xilinx_interleaved_ram all
 	$(MAKE) -C ips/xilinx_private_ram all
+	$(MAKE) -C ips/xilinx_generic_ram all
 
 clean-ram: ## Removes all Block Ram IP outputs related to l2 ram
 	$(MAKE) -C ips/xilinx_interleaved_ram clean
 	$(MAKE) -C ips/xilinx_private_ram clean
+	$(MAKE) -C ips/xilinx_generic_ram clean
 
 clean: ## Removes all bitstreams, *.log files and vivado related files (rm -rf vivado*)
 	rm -rf ${PROJECT}.*[^'bit']
