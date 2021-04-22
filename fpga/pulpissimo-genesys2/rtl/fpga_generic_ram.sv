@@ -12,7 +12,7 @@ module fpga_generic_ram
        output logic [31:0]          rdata_o
    );
 
-  logic [3:0]                       wea;
+  logic [31:0]                       wea;
 
   always_comb begin
     if (wen_i == 1'b0) begin
@@ -22,14 +22,26 @@ module fpga_generic_ram
     end
   end
 
-  xilinx_generic_ram i_xilinx_generic_ram
-    (
-     .clka(clk_i),
-     .ena(~csn_i),
-     .wea(wea),
-     .addra(addr_i),
-     .dina(wdata_i),
-     .douta(rdata_o)
-     );
+  for (genvar inst=0; inst<32; inst++) begin
+    xilinx_generic_ram i_xilinx_generic_ram
+      (
+       .clka   ( clk_i          ),
+       .ena    ( 1'b1           ),
+       .wea    ( wea     [inst] ),
+       .addra  ( addr_i         ),
+       .dina   ( wdata_i [inst] ),
+       .douta  ( rdata_o [inst] )
+       );
+  end
+
+//  xilinx_generic_ram i_xilinx_generic_ram
+//    (
+//     .clka(clk_i),
+//     .ena(~csn_i),
+//     .wea(wea),
+//     .addra(addr_i),
+//     .dina(wdata_i),
+//     .douta(rdata_o)
+//     );
 
 endmodule : fpga_generic_ram
