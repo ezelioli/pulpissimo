@@ -91,8 +91,8 @@ endmodule
 
 module pad_functional_output
 (
-  output logic I,
-  input  logic PAD
+  input  logic I,
+  output logic PAD
 );
 
   IOBUF iobuf_i (
