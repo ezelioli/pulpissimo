@@ -277,7 +277,7 @@ module xilinx_pulpissimo
        .pad_jtag_tms(pad_jtag_tms),
        .pad_jtag_trst(pad_jtag_trst),
        .pad_xtal_in(ref_clk),
-       .pad_bootsel()
+       .pad_bootsel(pad_bootsel)
        );
 
 endmodule
