@@ -59,25 +59,6 @@ module pad_frame
         input logic             oe_i2c0_scl_i    ,
         input logic             oe_uart_rx_i     ,
         input logic             oe_uart_tx_i     ,
-        /* DVSI */
-        /*
-        input logic             oe_dvsi_asa_i    ,
-        input logic             oe_dvsi_are_i    ,
-        input logic             oe_dvsi_asy_i    ,
-        input logic             oe_dvsi_ynrst_i  ,
-        input logic             oe_dvsi_yclk_i   ,
-        input logic             oe_dvsi_sxy_i    ,
-        input logic             oe_dvsi_xclk_i   ,
-        input logic             oe_dvsi_xnrst_i  ,
-        input logic             oe_dvsi_cfg0_i   ,
-        input logic             oe_dvsi_cfg1_i   ,
-        input logic             oe_dvsi_cfg2_i   ,
-        input logic             oe_dvsi_cfg3_i   ,
-        input logic             oe_dvsi_cfg4_i   ,
-        input logic             oe_dvsi_cfg5_i   ,
-        input logic             oe_dvsi_cfg6_i   ,
-        input logic             oe_dvsi_cfg7_i   ,
-        */
 
 
         // INPUTS SIGNALS TO THE PADS
@@ -311,40 +292,22 @@ module pad_frame
     pad_functional_input padinst_dvsi_xydata5  ( .O(in_dvsi_xydata5_o), .PAD(pad_dvsi_xydata5) );
     pad_functional_input padinst_dvsi_xydata6  ( .O(in_dvsi_xydata6_o), .PAD(pad_dvsi_xydata6) );
     pad_functional_input padinst_dvsi_xydata7  ( .O(in_dvsi_xydata7_o), .PAD(pad_dvsi_xydata7) );
-    pad_functional_input padinst_dvsi_on0      ( .O(in_dvsi_on0      ), .PAD(pad_dvsi_on0    ) );
-    pad_functional_input padinst_dvsi_on1      ( .O(in_dvsi_on1      ), .PAD(pad_dvsi_on1    ) );
-    pad_functional_input padinst_dvsi_on2      ( .O(in_dvsi_on2      ), .PAD(pad_dvsi_on2    ) );
-    pad_functional_input padinst_dvsi_on3      ( .O(in_dvsi_on3      ), .PAD(pad_dvsi_on3    ) );
-    pad_functional_input padinst_dvsi_off0     ( .O(in_dvsi_off0     ), .PAD(pad_dvsi_off0   ) );
-    pad_functional_input padinst_dvsi_off1     ( .O(in_dvsi_off1     ), .PAD(pad_dvsi_off1   ) );
-    pad_functional_input padinst_dvsi_off2     ( .O(in_dvsi_off2     ), .PAD(pad_dvsi_off2   ) );
-    pad_functional_input padinst_dvsi_off3     ( .O(in_dvsi_off3     ), .PAD(pad_dvsi_off3   ) );
-    /*
-    pad_functional_pd padinst_dvsi_asa     ( .OEN(~oe_dvsi_asa_i   ), .I(out_dvsi_asa_i   ), .O(), .PAD(pad_dvsi_asa   ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_ara     ( .OEN(~oe_dvsi_ara_i   ), .I(out_dvsi_ara_i   ), .O(), .PAD(pad_dvsi_ara   ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_asy     ( .OEN(~oe_dvsi_asy_i   ), .I(out_dvsi_asy_i   ), .O(), .PAD(pad_dvsi_asy   ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_ynrst   ( .OEN(~oe_dvsi_ynrst_i ), .I(out_dvsi_ynrst_i ), .O(), .PAD(pad_dvsi_yrstn ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_yclk    ( .OEN(~oe_dvsi_yclk_i  ), .I(out_dvsi_yclk_i  ), .O(), .PAD(pad_dvsi_yclk  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_sxy     ( .OEN(~oe_dvsi_sxy_i   ), .I(out_dvsi_sxy_i   ), .O(), .PAD(pad_dvsi_sxy   ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_xnrst   ( .OEN(~oe_dvsi_xnrst_i ), .I(out_dvsi_xnrst_i ), .O(), .PAD(pad_dvsi_xrstn ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_xclk    ( .OEN(~oe_dvsi_xclk_i  ), .I(out_dvsi_xclk_i  ), .O(), .PAD(pad_dvsi_xclk  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_cfg0    ( .OEN(~oe_dvsi_cfg0_i  ), .I(out_dvsi_cfg0_i  ), .O(), .PAD(pad_dvsi_cfg0  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_cfg1    ( .OEN(~oe_dvsi_cfg1_i  ), .I(out_dvsi_cfg1_i  ), .O(), .PAD(pad_dvsi_cfg1  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_cfg2    ( .OEN(~oe_dvsi_cfg2_i  ), .I(out_dvsi_cfg2_i  ), .O(), .PAD(pad_dvsi_cfg2  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_cfg3    ( .OEN(~oe_dvsi_cfg3_i  ), .I(out_dvsi_cfg3_i  ), .O(), .PAD(pad_dvsi_cfg3  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_cfg4    ( .OEN(~oe_dvsi_cfg4_i  ), .I(out_dvsi_cfg4_i  ), .O(), .PAD(pad_dvsi_cfg4  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_cfg5    ( .OEN(~oe_dvsi_cfg5_i  ), .I(out_dvsi_cfg5_i  ), .O(), .PAD(pad_dvsi_cfg5  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_cfg6    ( .OEN(~oe_dvsi_cfg6_i  ), .I(out_dvsi_cfg6_i  ), .O(), .PAD(pad_dvsi_cfg6  ), .PEN(1'b0) );
-    pad_functional_pd padinst_dvsi_cfg7    ( .OEN(~oe_dvsi_cfg7_i  ), .I(out_dvsi_cfg7_i  ), .O(), .PAD(pad_dvsi_cfg7  ), .PEN(1'b0) );
-    */
+    pad_functional_input padinst_dvsi_on0      ( .O(in_dvsi_on0_o    ), .PAD(pad_dvsi_on0    ) );
+    pad_functional_input padinst_dvsi_on1      ( .O(in_dvsi_on1_o    ), .PAD(pad_dvsi_on1    ) );
+    pad_functional_input padinst_dvsi_on2      ( .O(in_dvsi_on2_o    ), .PAD(pad_dvsi_on2    ) );
+    pad_functional_input padinst_dvsi_on3      ( .O(in_dvsi_on3_o    ), .PAD(pad_dvsi_on3    ) );
+    pad_functional_input padinst_dvsi_off0     ( .O(in_dvsi_off0_o   ), .PAD(pad_dvsi_off0   ) );
+    pad_functional_input padinst_dvsi_off1     ( .O(in_dvsi_off1_o   ), .PAD(pad_dvsi_off1   ) );
+    pad_functional_input padinst_dvsi_off2     ( .O(in_dvsi_off2_o   ), .PAD(pad_dvsi_off2   ) );
+    pad_functional_input padinst_dvsi_off3     ( .O(in_dvsi_off3_o   ), .PAD(pad_dvsi_off3   ) );
 
     pad_functional_output padinst_dvsi_asa     ( .I(out_dvsi_asa_i   ), .PAD(pad_dvsi_asa   ) );
-    pad_functional_output padinst_dvsi_ara     ( .I(out_dvsi_ara_i   ), .PAD(pad_dvsi_ara   ) );
+    pad_functional_output padinst_dvsi_ara     ( .I(out_dvsi_are_i   ), .PAD(pad_dvsi_are   ) );
     pad_functional_output padinst_dvsi_asy     ( .I(out_dvsi_asy_i   ), .PAD(pad_dvsi_asy   ) );
-    pad_functional_output padinst_dvsi_ynrst   ( .I(out_dvsi_ynrst_i ), .PAD(pad_dvsi_yrstn ) );
+    pad_functional_output padinst_dvsi_ynrst   ( .I(out_dvsi_ynrst_i ), .PAD(pad_dvsi_ynrst ) );
     pad_functional_output padinst_dvsi_yclk    ( .I(out_dvsi_yclk_i  ), .PAD(pad_dvsi_yclk  ) );
     pad_functional_output padinst_dvsi_sxy     ( .I(out_dvsi_sxy_i   ), .PAD(pad_dvsi_sxy   ) );
-    pad_functional_output padinst_dvsi_xnrst   ( .I(out_dvsi_xnrst_i ), .PAD(pad_dvsi_xrstn ) );
+    pad_functional_output padinst_dvsi_xnrst   ( .I(out_dvsi_xnrst_i ), .PAD(pad_dvsi_xnrst ) );
     pad_functional_output padinst_dvsi_xclk    ( .I(out_dvsi_xclk_i  ), .PAD(pad_dvsi_xclk  ) );
     pad_functional_output padinst_dvsi_cfg0    ( .I(out_dvsi_cfg0_i  ), .PAD(pad_dvsi_cfg0  ) );
     pad_functional_output padinst_dvsi_cfg1    ( .I(out_dvsi_cfg1_i  ), .PAD(pad_dvsi_cfg1  ) );
@@ -355,17 +318,17 @@ module pad_frame
     pad_functional_output padinst_dvsi_cfg6    ( .I(out_dvsi_cfg6_i  ), .PAD(pad_dvsi_cfg6  ) );
     pad_functional_output padinst_dvsi_cfg7    ( .I(out_dvsi_cfg7_i  ), .PAD(pad_dvsi_cfg7  ) );
 
-    pad_functional_pu padinst_bootsel    (.OEN(1'b1            ), .I(                ), .O(bootsel_o      ), .PAD(pad_bootsel   ), .PEN(1'b1             ) );
+    pad_functional_pu padinst_bootsel    (.OEN(1'b0            ), .I(                ), .O(bootsel_o      ), .PAD(pad_bootsel   ), .PEN(1'b1             ) );
 
 
 `ifndef PULP_FPGA_EMUL
-  pad_functional_pu padinst_ref_clk    (.OEN(1'b1            ), .I(                ), .O(ref_clk_o      ), .PAD(pad_xtal_in   ), .PEN(1'b1             ) );
-  pad_functional_pu padinst_reset_n    (.OEN(1'b1            ), .I(                ), .O(rstn_o         ), .PAD(pad_reset_n   ), .PEN(1'b1             ) );
-  pad_functional_pu padinst_jtag_tck   (.OEN(1'b1            ), .I(                ), .O(jtag_tck_o     ), .PAD(pad_jtag_tck  ), .PEN(1'b1             ) );
-  pad_functional_pu padinst_jtag_tms   (.OEN(1'b1            ), .I(                ), .O(jtag_tms_o     ), .PAD(pad_jtag_tms  ), .PEN(1'b1             ) );
-  pad_functional_pu padinst_jtag_tdi   (.OEN(1'b1            ), .I(                ), .O(jtag_tdi_o     ), .PAD(pad_jtag_tdi  ), .PEN(1'b1             ) );
-  pad_functional_pu padinst_jtag_trstn (.OEN(1'b1            ), .I(                ), .O(jtag_trst_o    ), .PAD(pad_jtag_trst ), .PEN(1'b1             ) );
-  pad_functional_pd padinst_jtag_tdo   (.OEN(1'b0            ), .I(jtag_tdo_i      ), .O(               ), .PAD(pad_jtag_tdo  ), .PEN(1'b1             ) );
+  pad_functional_pu padinst_ref_clk    (.OEN(~1'b1            ), .I(                ), .O(ref_clk_o      ), .PAD(pad_xtal_in   ), .PEN(1'b1             ) );
+  pad_functional_pu padinst_reset_n    (.OEN(~1'b1            ), .I(                ), .O(rstn_o         ), .PAD(pad_reset_n   ), .PEN(1'b1             ) );
+  pad_functional_pu padinst_jtag_tck   (.OEN(~1'b1            ), .I(                ), .O(jtag_tck_o     ), .PAD(pad_jtag_tck  ), .PEN(1'b1             ) );
+  pad_functional_pu padinst_jtag_tms   (.OEN(~1'b1            ), .I(                ), .O(jtag_tms_o     ), .PAD(pad_jtag_tms  ), .PEN(1'b1             ) );
+  pad_functional_pu padinst_jtag_tdi   (.OEN(~1'b1            ), .I(                ), .O(jtag_tdi_o     ), .PAD(pad_jtag_tdi  ), .PEN(1'b1             ) );
+  pad_functional_pu padinst_jtag_trstn (.OEN(~1'b1            ), .I(                ), .O(jtag_trst_o    ), .PAD(pad_jtag_trst ), .PEN(1'b1             ) );
+  pad_functional_pd padinst_jtag_tdo   (.OEN(~1'b0            ), .I(jtag_tdo_i      ), .O(               ), .PAD(pad_jtag_tdo  ), .PEN(1'b1             ) );
 `else
   assign ref_clk_o = pad_xtal_in;
   assign rstn_o = pad_reset_n;
