@@ -112,7 +112,7 @@ set_property -dict {PACKAGE_PIN U29 IOSTANDARD LVCMOS33} [get_ports led3_o]
 ## Switches
 set_property -dict {PACKAGE_PIN G19 IOSTANDARD LVCMOS12} [get_ports switch0_i]
 set_property -dict {PACKAGE_PIN G25 IOSTANDARD LVCMOS12} [get_ports switch1_i]
-set_property -dict {PACKAGE_PIN H24 IOSTANDARD LVCMOS12} [get_ports {pad_bootsel}]
+set_property -dict {PACKAGE_PIN H24 IOSTANDARD LVCMOS12} [get_ports pad_bootsel]
 # set_property -dict {PACKAGE_PIN K19 IOSTANDARD LVCMOS12} [get_ports {}]
 # set_property -dict {PACKAGE_PIN N19 IOSTANDARD LVCMOS12} [get_ports {}]
 # set_property -dict {PACKAGE_PIN P19 IOSTANDARD LVCMOS12} [get_ports {}]

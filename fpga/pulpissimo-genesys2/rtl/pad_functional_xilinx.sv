@@ -81,7 +81,7 @@ module pad_functional_input
 
   (* PULLDOWN = "YES" *)
   IOBUF iobuf_i (
-    .T  ( 1'b0 ),
+    .T  ( 1'b1 ),
     .I  (      ),
     .O  ( O    ),
     .IO ( PAD  )
@@ -96,7 +96,7 @@ module pad_functional_output
 );
 
   IOBUF iobuf_i (
-    .T  ( 1'b1 ),
+    .T  ( 1'b0 ),
     .I  ( I    ),
     .O  (      ),
     .IO ( PAD  )
