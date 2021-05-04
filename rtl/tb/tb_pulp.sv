@@ -153,6 +153,18 @@ module tb_pulp;
    wire                  w_cam_hsync;
    wire                  w_cam_vsync;
 
+   wire                  w_asa    ;   
+   wire                  w_are    ;   
+   wire                  w_asy    ;   
+   wire                  w_ynrst  ; 
+   wire                  w_yclk   ;  
+   wire                  w_sxy    ;   
+   wire                  w_xclk   ;  
+   wire                  w_xnrst  ; 
+   wire            [3:0] w_on     ;    
+   wire            [3:0] w_off    ;   
+   wire            [7:0] w_xydata ;
+
    // I2S 0
    wire                  w_i2s0_sck;
    wire                  w_i2s0_ws;
@@ -514,6 +526,24 @@ module tb_pulp;
 
    end
 
+   fake_dvs dvs_model (
+   
+      .rst_ni        ( w_rst_n    ),
+   
+      .saer_asa_i    ( w_asa    ),
+      .saer_are_i    ( w_are    ),
+      .saer_asy_i    ( w_asy    ),
+      .saer_ynrst_i  ( w_ynrst  ),
+      .saer_yclk_i   ( w_yclk   ),
+      .saer_sxy_i    ( w_sxy    ),
+      .saer_xclk_i   ( w_xclk   ),
+      .saer_xnrst_i  ( w_xnrst  ),
+      .saer_on_o     ( w_on     ),
+      .saer_off_o    ( w_off    ),
+      .saer_xydata_o ( w_xydata )
+   
+   );
+
     // jtag calls from dpi
     SimJTAG #(
         .TICK_DELAY (1),
@@ -561,6 +591,39 @@ module tb_pulp;
       .pad_cam_data6      ( w_cam_data[6]      ),
       .pad_cam_data7      ( w_cam_data[7]      ),
       .pad_cam_vsync      ( w_cam_vsync        ),
+
+      .pad_dvsi_asa       ( w_asa       ),
+      .pad_dvsi_are       ( w_are       ),
+      .pad_dvsi_asy       ( w_asy       ),
+      .pad_dvsi_ynrst     ( w_ynrst     ),
+      .pad_dvsi_yclk      ( w_yclk      ),
+      .pad_dvsi_sxy       ( w_sxy       ),
+      .pad_dvsi_xclk      ( w_xclk      ),
+      .pad_dvsi_xnrst     ( w_xnrst     ),
+      .pad_dvsi_cfg0      (  ),
+      .pad_dvsi_cfg1      (  ),
+      .pad_dvsi_cfg2      (  ),
+      .pad_dvsi_cfg3      (  ),
+      .pad_dvsi_cfg4      (  ),
+      .pad_dvsi_cfg5      (  ),
+      .pad_dvsi_cfg6      (  ),
+      .pad_dvsi_cfg7      (  ),
+      .pad_dvsi_xydata0   ( w_xydata[0] ),
+      .pad_dvsi_xydata1   ( w_xydata[1] ),
+      .pad_dvsi_xydata2   ( w_xydata[2] ),
+      .pad_dvsi_xydata3   ( w_xydata[3] ),
+      .pad_dvsi_xydata4   ( w_xydata[4] ),
+      .pad_dvsi_xydata5   ( w_xydata[5] ),
+      .pad_dvsi_xydata6   ( w_xydata[6] ),
+      .pad_dvsi_xydata7   ( w_xydata[7] ),
+      .pad_dvsi_on0       ( w_on[0]     ),
+      .pad_dvsi_on1       ( w_on[1]     ),
+      .pad_dvsi_on2       ( w_on[2]     ),
+      .pad_dvsi_on3       ( w_on[3]     ),
+      .pad_dvsi_off0      ( w_off[0]    ),
+      .pad_dvsi_off1      ( w_off[1]    ),
+      .pad_dvsi_off2      ( w_off[2]    ),
+      .pad_dvsi_off3      ( w_off[3]    ),
 
       .pad_sdio_clk       (                    ),
       .pad_sdio_cmd       (                    ),

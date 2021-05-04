@@ -60,6 +60,7 @@ sources:
       - rtl/vip/spi_master_padframe.sv
       - rtl/vip/uart_tb_rx.sv
       - rtl/vip/camera/cam_vip.sv
+      - rtl/vip/dvsi/fake_dvs.sv
 
   # S25FS256_model (SPI Flash)
   - target: any(test,simulation)
