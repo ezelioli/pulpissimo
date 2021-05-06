@@ -37,7 +37,8 @@ open_models:
   files: [
     spi_master_padframe.sv,
     uart_tb_rx.sv,
-    camera/cam_vip.sv
+    camera/cam_vip.sv,
+    dvsi/fake_dvs.sv
   ]
   flags: [
     skip_synthesis,
