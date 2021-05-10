@@ -311,14 +311,14 @@ module pad_frame
     pad_functional_input padinst_dvsi_xydata5  ( .O(in_dvsi_xydata5_o), .PAD(pad_dvsi_xydata5) );
     pad_functional_input padinst_dvsi_xydata6  ( .O(in_dvsi_xydata6_o), .PAD(pad_dvsi_xydata6) );
     pad_functional_input padinst_dvsi_xydata7  ( .O(in_dvsi_xydata7_o), .PAD(pad_dvsi_xydata7) );
-    pad_functional_input padinst_dvsi_on0      ( .O(in_dvsi_on0      ), .PAD(pad_dvsi_on0    ) );
-    pad_functional_input padinst_dvsi_on1      ( .O(in_dvsi_on1      ), .PAD(pad_dvsi_on1    ) );
-    pad_functional_input padinst_dvsi_on2      ( .O(in_dvsi_on2      ), .PAD(pad_dvsi_on2    ) );
-    pad_functional_input padinst_dvsi_on3      ( .O(in_dvsi_on3      ), .PAD(pad_dvsi_on3    ) );
-    pad_functional_input padinst_dvsi_off0     ( .O(in_dvsi_off0     ), .PAD(pad_dvsi_off0   ) );
-    pad_functional_input padinst_dvsi_off1     ( .O(in_dvsi_off1     ), .PAD(pad_dvsi_off1   ) );
-    pad_functional_input padinst_dvsi_off2     ( .O(in_dvsi_off2     ), .PAD(pad_dvsi_off2   ) );
-    pad_functional_input padinst_dvsi_off3     ( .O(in_dvsi_off3     ), .PAD(pad_dvsi_off3   ) );
+    pad_functional_input padinst_dvsi_on0      ( .O(in_dvsi_on0_o    ), .PAD(pad_dvsi_on0    ) );
+    pad_functional_input padinst_dvsi_on1      ( .O(in_dvsi_on1_o    ), .PAD(pad_dvsi_on1    ) );
+    pad_functional_input padinst_dvsi_on2      ( .O(in_dvsi_on2_o    ), .PAD(pad_dvsi_on2    ) );
+    pad_functional_input padinst_dvsi_on3      ( .O(in_dvsi_on3_o    ), .PAD(pad_dvsi_on3    ) );
+    pad_functional_input padinst_dvsi_off0     ( .O(in_dvsi_off0_o   ), .PAD(pad_dvsi_off0   ) );
+    pad_functional_input padinst_dvsi_off1     ( .O(in_dvsi_off1_o   ), .PAD(pad_dvsi_off1   ) );
+    pad_functional_input padinst_dvsi_off2     ( .O(in_dvsi_off2_o   ), .PAD(pad_dvsi_off2   ) );
+    pad_functional_input padinst_dvsi_off3     ( .O(in_dvsi_off3_o   ), .PAD(pad_dvsi_off3   ) );
     /*
     pad_functional_pd padinst_dvsi_asa     ( .OEN(~oe_dvsi_asa_i   ), .I(out_dvsi_asa_i   ), .O(), .PAD(pad_dvsi_asa   ), .PEN(1'b0) );
     pad_functional_pd padinst_dvsi_ara     ( .OEN(~oe_dvsi_ara_i   ), .I(out_dvsi_ara_i   ), .O(), .PAD(pad_dvsi_ara   ), .PEN(1'b0) );
