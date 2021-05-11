@@ -339,12 +339,12 @@ module pad_frame
     */
 
     pad_functional_output padinst_dvsi_asa     ( .I(out_dvsi_asa_i   ), .PAD(pad_dvsi_asa   ) );
-    pad_functional_output padinst_dvsi_ara     ( .I(out_dvsi_ara_i   ), .PAD(pad_dvsi_ara   ) );
+    pad_functional_output padinst_dvsi_are     ( .I(out_dvsi_are_i   ), .PAD(pad_dvsi_are   ) );
     pad_functional_output padinst_dvsi_asy     ( .I(out_dvsi_asy_i   ), .PAD(pad_dvsi_asy   ) );
-    pad_functional_output padinst_dvsi_ynrst   ( .I(out_dvsi_ynrst_i ), .PAD(pad_dvsi_yrstn ) );
+    pad_functional_output padinst_dvsi_ynrst   ( .I(out_dvsi_ynrst_i ), .PAD(pad_dvsi_ynrst ) );
     pad_functional_output padinst_dvsi_yclk    ( .I(out_dvsi_yclk_i  ), .PAD(pad_dvsi_yclk  ) );
     pad_functional_output padinst_dvsi_sxy     ( .I(out_dvsi_sxy_i   ), .PAD(pad_dvsi_sxy   ) );
-    pad_functional_output padinst_dvsi_xnrst   ( .I(out_dvsi_xnrst_i ), .PAD(pad_dvsi_xrstn ) );
+    pad_functional_output padinst_dvsi_xnrst   ( .I(out_dvsi_xnrst_i ), .PAD(pad_dvsi_xnrst ) );
     pad_functional_output padinst_dvsi_xclk    ( .I(out_dvsi_xclk_i  ), .PAD(pad_dvsi_xclk  ) );
     pad_functional_output padinst_dvsi_cfg0    ( .I(out_dvsi_cfg0_i  ), .PAD(pad_dvsi_cfg0  ) );
     pad_functional_output padinst_dvsi_cfg1    ( .I(out_dvsi_cfg1_i  ), .PAD(pad_dvsi_cfg1  ) );
