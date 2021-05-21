@@ -39,6 +39,80 @@ set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_
 set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/i_dmi_jtag/i_dmi_cdc/i_cdc_resp/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/i_dmi_jtag/i_dmi_cdc/i_cdc_resp/i_dst/req_dst_q_reg/D] 20.000
 set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/i_dmi_jtag/i_dmi_cdc/i_cdc_req/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/i_dmi_jtag/i_dmi_cdc/i_cdc_req/i_src/ack_src_q_reg/D] 20.000
 
+# setting max delays for cdc_2phase in pulp dvsi
+#cdc_r_rx_sot_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_sot_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_sot_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_sot_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_sot_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_sot_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_sot_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_rx_eot_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_eot_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_eot_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_eot_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_eot_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_eot_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_eot_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_control_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_control_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_control_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_control_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_control_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_control_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_control_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_cfg_glob_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_glob_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_glob_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_glob_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_glob_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_glob_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_glob_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_cfg_xyres_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_xyres_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_xyres_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_xyres_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_xyres_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_xyres_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_xyres_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_crop_left_right_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_left_right_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_left_right_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_left_right_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_left_right_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_left_right_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_left_right_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_crop_top_bottom_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_top_bottom_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_top_bottom_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_top_bottom_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_top_bottom_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_top_bottom_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_crop_top_bottom_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_params_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_params_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_params_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_params_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_params_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_params_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_params_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_cfg_timer_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_timer_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_timer_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_timer_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_timer_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_timer_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_timer_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_bias_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_bias_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_bias_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_bias_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_bias_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_bias_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_bias_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_cfg_l2start_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_l2start_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_l2start_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_l2start_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_l2start_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_l2start_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_cfg_l2start_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_addr_step_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_addr_step_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_addr_step_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_addr_step_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_addr_step_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_addr_step_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_addr_step_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_trigger_threshold_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_threshold_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_threshold_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_threshold_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_threshold_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_threshold_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_threshold_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_trigger_tdelta_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_tdelta_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_tdelta_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_tdelta_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_tdelta_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_tdelta_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_trigger_tdelta_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_dvsi_int_mode_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_int_mode_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_int_mode_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_int_mode_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_int_mode_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_int_mode_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_dvsi_int_mode_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_rx_dest_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_dest_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_dest_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_dest_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_dest_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_dest_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_dest_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_fb_cfg_ints_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_ints_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_ints_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_ints_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_ints_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_ints_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_ints_i/i_src/ack_src_q_reg/D] 50.000
+#cdc_r_fb_cfg_bits_i
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_bits_i/i_src/data_src_q_reg*/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_bits_i/i_dst/data_dst_q_reg*/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_bits_i/i_src/req_src_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_bits_i/i_dst/req_dst_q_reg/D] 50.000
+set_max_delay -datapath_only -from [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_bits_i/i_dst/ack_dst_q_reg/C] -to [get_pins i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_fb_cfg_bits_i/i_src/ack_src_q_reg/D] 50.000
+
 
 # reset signal
 set_false_path -from [get_ports pad_reset_n]
@@ -52,6 +126,9 @@ set_property ASYNC_REG true [get_cells i_pulpissimo/soc_domain_i/pulp_soc_i/soc_
 set_property ASYNC_REG true [get_cells i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_apb_timer_unit/s_ref_clk*]
 set_property ASYNC_REG true [get_cells i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_ref_clk_sync/i_pulp_sync/r_reg_reg*]
 set_property ASYNC_REG true [get_cells i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/u_evnt_gen/r_ls_sync_reg*]
+#set_property ASYNC_REG true [get_cells i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_sot_i/i_dst/data_dst_q_reg*]
+#set_property ASYNC_REG true [get_cells i_pulpissimo/soc_domain_i/pulp_soc_i/soc_peripherals_i/i_udma/dvsi[0].i_udma_dvsi_wrap/i_dvsi/i_dvsi_reg_if/cdc_r_rx_eot_i/i_dst/data_dst_q_reg*]
+
 
 # Create asynchronous clock group between slow-clk and SoC clock. Those clocks
 # are considered asynchronously and proper synchronization regs are in place
@@ -350,38 +427,38 @@ set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]
 #set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS12 } [get_ports { fmc_la_n[29] }]; #IO_L22N_T3_17 Sch=fmc_la_n[29]
 #set_property -dict { PACKAGE_PIN A17   IOSTANDARD LVCMOS12 } [get_ports { fmc_la_n[30] }]; #IO_L20N_T3_17 Sch=fmc_la_n[30]
 #set_property -dict { PACKAGE_PIN B17   IOSTANDARD LVCMOS12 } [get_ports { fmc_la_n[31] }]; #IO_L17N_T2_17 Sch=fmc_la_n[31]
-set_property -dict { PACKAGE_PIN D27   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_asa     }]; #IO_L13P_T2_MRCC_16 Sch=fmc_la_p[00]
-set_property -dict { PACKAGE_PIN D26   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_are     }]; #IO_L11P_T1_SRCC_16 Sch=fmc_la_p[01]
-set_property -dict { PACKAGE_PIN H30   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_asy     }]; #IO_L24P_T3_16 Sch=fmc_la_p[02]
-set_property -dict { PACKAGE_PIN E29   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_ynrst   }]; #IO_L18P_T2_16 Sch=fmc_la_p[03]
-set_property -dict { PACKAGE_PIN H26   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_yclk    }]; #IO_L23P_T3_16 Sch=fmc_la_p[04]
-set_property -dict { PACKAGE_PIN B30   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_sxy     }]; #IO_L17P_T2_16 Sch=fmc_la_p[05]
-set_property -dict { PACKAGE_PIN D29   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xclk    }]; #IO_L16P_T2_16 Sch=fmc_la_p[06]
-set_property -dict { PACKAGE_PIN F25   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xnrst   }]; #IO_L3P_T0_DQS_16 Sch=fmc_la_p[07]
-set_property -dict { PACKAGE_PIN C29   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_cfg0    }]; #IO_L15P_T2_DQS_16 Sch=fmc_la_p[08]
-set_property -dict { PACKAGE_PIN B28   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_cfg1    }]; #IO_L9P_T1_DQS_16 Sch=fmc_la_p[09]
-set_property -dict { PACKAGE_PIN B27   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_cfg2    }]; #IO_L7P_T1_16 Sch=fmc_la_p[10]
-set_property -dict { PACKAGE_PIN A25   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_cfg3    }]; #IO_L10P_T1_16 Sch=fmc_la_p[11]
-set_property -dict { PACKAGE_PIN F26   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_cfg4    }]; #IO_L5P_T0_16 Sch=fmc_la_p[12]
-set_property -dict { PACKAGE_PIN E24   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_cfg5    }]; #IO_L4P_T0_16 Sch=fmc_la_p[13]
-set_property -dict { PACKAGE_PIN C24   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_cfg6    }]; #IO_L8P_T1_16 Sch=fmc_la_p[14]
-set_property -dict { PACKAGE_PIN B23   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_cfg7    }]; #IO_L1P_T0_16 Sch=fmc_la_p[15]
-set_property -dict { PACKAGE_PIN E23   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xydata0 }]; #IO_L2P_T0_16 Sch=fmc_la_p[16]
-set_property -dict { PACKAGE_PIN F21   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xydata1 }]; #IO_L11P_T1_SRCC_17 Sch=fmc_la_p[17]
-set_property -dict { PACKAGE_PIN D17   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xydata2 }]; #IO_L13P_T2_MRCC_17 Sch=fmc_la_p[18]
-set_property -dict { PACKAGE_PIN H21   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xydata3 }]; #IO_L7P_T1_17 Sch=fmc_la_p[19]
-set_property -dict { PACKAGE_PIN G22   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xydata4 }]; #IO_L9P_T1_DQS_17 Sch=fmc_la_p[20]
-set_property -dict { PACKAGE_PIN L17   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xydata5 }]; #IO_L5P_T0_17 Sch=fmc_la_p[21]
-set_property -dict { PACKAGE_PIN J17   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xydata6 }]; #IO_L3P_T0_DQS_17 Sch=fmc_la_p[22]
-set_property -dict { PACKAGE_PIN G17   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_xydata7 }]; #IO_L18P_T2_17 Sch=fmc_la_p[23]
-set_property -dict { PACKAGE_PIN H20   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_on0     }]; #IO_L2P_T0_17 Sch=fmc_la_p[24]
-set_property -dict { PACKAGE_PIN D22   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_on1     }]; #IO_L10P_T1_17 Sch=fmc_la_p[25]
-set_property -dict { PACKAGE_PIN B22   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_on2     }]; #IO_L23P_T3_17 Sch=fmc_la_p[26]
-set_property -dict { PACKAGE_PIN A20   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_on3     }]; #IO_L21P_T3_DQS_17 Sch=fmc_la_p[27]
-set_property -dict { PACKAGE_PIN J19   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_off0    }]; #IO_L4P_T0_17 Sch=fmc_la_p[28]
-set_property -dict { PACKAGE_PIN B18   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_off1    }]; #IO_L22P_T3_17 Sch=fmc_la_p[29]
-set_property -dict { PACKAGE_PIN A16   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_off2    }]; #IO_L20P_T3_17 Sch=fmc_la_p[30]
-set_property -dict { PACKAGE_PIN C17   IOSTANDARD LVCMOS12 } [get_ports { pad_dvsi_off3    }]; #IO_L17P_T2_17 Sch=fmc_la_p[31]
+set_property -dict {PACKAGE_PIN D27 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_asa]
+set_property -dict {PACKAGE_PIN D26 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_are]
+set_property -dict {PACKAGE_PIN H30 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_asy]
+set_property -dict {PACKAGE_PIN E29 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_ynrst]
+set_property -dict {PACKAGE_PIN H26 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_yclk]
+set_property -dict {PACKAGE_PIN B30 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_sxy]
+set_property -dict {PACKAGE_PIN D29 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xclk]
+set_property -dict {PACKAGE_PIN F25 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xnrst]
+set_property -dict {PACKAGE_PIN C29 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_cfg0]
+set_property -dict {PACKAGE_PIN B28 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_cfg1]
+set_property -dict {PACKAGE_PIN B27 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_cfg2]
+set_property -dict {PACKAGE_PIN A25 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_cfg3]
+set_property -dict {PACKAGE_PIN F26 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_cfg4]
+set_property -dict {PACKAGE_PIN E24 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_cfg5]
+set_property -dict {PACKAGE_PIN C24 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_cfg6]
+set_property -dict {PACKAGE_PIN B23 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_cfg7]
+set_property -dict {PACKAGE_PIN E23 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xydata0]
+set_property -dict {PACKAGE_PIN F21 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xydata1]
+set_property -dict {PACKAGE_PIN D17 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xydata2]
+set_property -dict {PACKAGE_PIN H21 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xydata3]
+set_property -dict {PACKAGE_PIN G22 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xydata4]
+set_property -dict {PACKAGE_PIN L17 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xydata5]
+set_property -dict {PACKAGE_PIN J17 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xydata6]
+set_property -dict {PACKAGE_PIN G17 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_xydata7]
+set_property -dict {PACKAGE_PIN H20 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_on0]
+set_property -dict {PACKAGE_PIN D22 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_on1]
+set_property -dict {PACKAGE_PIN B22 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_on2]
+set_property -dict {PACKAGE_PIN A20 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_on3]
+set_property -dict {PACKAGE_PIN J19 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_off0]
+set_property -dict {PACKAGE_PIN B18 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_off1]
+set_property -dict {PACKAGE_PIN A16 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_off2]
+set_property -dict {PACKAGE_PIN C17 IOSTANDARD LVCMOS12} [get_ports pad_dvsi_off3]
 #set_property -dict { PACKAGE_PIN J18   IOSTANDARD LVCMOS12 } [get_ports { fmc_la_n[32] }]; #IO_L1N_T0_17 Sch=fmc_la_n[32]
 #set_property -dict { PACKAGE_PIN K18   IOSTANDARD LVCMOS12 } [get_ports { fmc_la_p[32] }]; #IO_L1P_T0_17 Sch=fmc_la_p[32]
 #set_property -dict { PACKAGE_PIN C16   IOSTANDARD LVCMOS12 } [get_ports { fmc_la_n[33] }]; #IO_L15N_T2_DQS_17 Sch=fmc_la_n[33]
@@ -389,3 +466,6 @@ set_property -dict { PACKAGE_PIN C17   IOSTANDARD LVCMOS12 } [get_ports { pad_dv
 #set_property -dict { PACKAGE_PIN AC24  IOSTANDARD LVCMOS33 } [get_ports { FMC_SCL }]; #IO_L9P_T1_DQS_12 Sch=fmc_scl
 #set_property -dict { PACKAGE_PIN AD24  IOSTANDARD LVCMOS33 } [get_ports { FMC_SDA }]; #IO_L9N_T1_DQS_12 Sch=fmc_sda
 
+set_property CONFIG_MODE SPIx4 [current_design]
+set_property CFGBVS VCCO [current_design]
+set_property CONFIG_VOLTAGE 3.3 [current_design]
