@@ -50,11 +50,13 @@ BENDER_BUILD_DIR = sim
 ifdef BENDER
 checkout: bender
 	./bender update
+	$(MAKE) scripts
+	cd rtl/tb && $(MAKE) alla
 else
 checkout:
 	./update-ips
-endif
 	$(MAKE) scripts
+endif
 
 # generic clean and build targets for the platform
 .PHONY: clean

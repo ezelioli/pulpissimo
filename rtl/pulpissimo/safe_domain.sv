@@ -85,6 +85,40 @@ module safe_domain #(
         output logic             cam_hsync_o          ,
         output logic             cam_vsync_o          ,
 
+        // DVSI INTERFACE
+        input  logic             dvsi_asa_i           ,
+        input  logic             dvsi_are_i           ,
+        input  logic             dvsi_asy_i           ,
+        input  logic             dvsi_ynrst_i         ,  
+        input  logic             dvsi_yclk_i          , 
+        input  logic             dvsi_sxy_i           ,
+        input  logic             dvsi_xclk_i          , 
+        input  logic             dvsi_xnrst_i         ,  
+        input  logic             dvsi_cfg0_i          , 
+        input  logic             dvsi_cfg1_i          , 
+        input  logic             dvsi_cfg2_i          , 
+        input  logic             dvsi_cfg3_i          , 
+        input  logic             dvsi_cfg4_i          , 
+        input  logic             dvsi_cfg5_i          , 
+        input  logic             dvsi_cfg6_i          , 
+        input  logic             dvsi_cfg7_i          ,
+        output logic             dvsi_xydata0_o       ,
+        output logic             dvsi_xydata1_o       ,
+        output logic             dvsi_xydata2_o       ,
+        output logic             dvsi_xydata3_o       ,
+        output logic             dvsi_xydata4_o       ,
+        output logic             dvsi_xydata5_o       ,
+        output logic             dvsi_xydata6_o       ,
+        output logic             dvsi_xydata7_o       ,
+        output logic             dvsi_on0_o           ,
+        output logic             dvsi_on1_o           ,
+        output logic             dvsi_on2_o           ,
+        output logic             dvsi_on3_o           ,
+        output logic             dvsi_off0_o          ,
+        output logic             dvsi_off1_o          ,
+        output logic             dvsi_off2_o          ,
+        output logic             dvsi_off3_o          ,
+
         // TIMER
         input  logic [3:0]       timer0_i             ,
         input  logic [3:0]       timer1_i             ,
@@ -128,6 +162,23 @@ module safe_domain #(
         output logic             out_i2s0_ws_o        ,
         output logic             out_i2s0_sdi_o       ,
         output logic             out_i2s1_sdi_o       ,
+        /* DVSI */
+        output logic             out_dvsi_asa_o       ,
+        output logic             out_dvsi_are_o       ,
+        output logic             out_dvsi_asy_o       ,
+        output logic             out_dvsi_ynrst_o     ,
+        output logic             out_dvsi_yclk_o      ,
+        output logic             out_dvsi_sxy_o       ,
+        output logic             out_dvsi_xclk_o      ,
+        output logic             out_dvsi_xnrst_o     ,
+        output logic             out_dvsi_cfg0_o      ,
+        output logic             out_dvsi_cfg1_o      ,
+        output logic             out_dvsi_cfg2_o      ,
+        output logic             out_dvsi_cfg3_o      ,
+        output logic             out_dvsi_cfg4_o      ,
+        output logic             out_dvsi_cfg5_o      ,
+        output logic             out_dvsi_cfg6_o      ,
+        output logic             out_dvsi_cfg7_o      ,
 
 
         // PAD INPUTS
@@ -163,6 +214,23 @@ module safe_domain #(
         input logic              in_i2s0_ws_i         ,
         input logic              in_i2s0_sdi_i        ,
         input logic              in_i2s1_sdi_i        ,
+        /* DVSI */
+        input logic              in_dvsi_xydata0_i    ,
+        input logic              in_dvsi_xydata1_i    ,
+        input logic              in_dvsi_xydata2_i    ,
+        input logic              in_dvsi_xydata3_i    ,
+        input logic              in_dvsi_xydata4_i    ,
+        input logic              in_dvsi_xydata5_i    ,
+        input logic              in_dvsi_xydata6_i    ,
+        input logic              in_dvsi_xydata7_i    ,
+        input logic              in_dvsi_on0_i        ,
+        input logic              in_dvsi_on1_i        ,
+        input logic              in_dvsi_on2_i        ,
+        input logic              in_dvsi_on3_i        ,
+        input logic              in_dvsi_off0_i       ,
+        input logic              in_dvsi_off1_i       ,
+        input logic              in_dvsi_off2_i       ,
+        input logic              in_dvsi_off3_i       ,
 
         // OUTPUT ENABLE
         output logic             oe_spim_sdio0_o      ,
@@ -196,7 +264,26 @@ module safe_domain #(
         output logic             oe_i2s0_sck_o        ,
         output logic             oe_i2s0_ws_o         ,
         output logic             oe_i2s0_sdi_o        ,
-        output logic             oe_i2s1_sdi_o
+        output logic             oe_i2s1_sdi_o        
+        /* DVSI */
+        /*
+        output logic             oe_dvsi_asa_o        ,
+        output logic             oe_dvsi_are_o        ,
+        output logic             oe_dvsi_asy_o        ,
+        output logic             oe_dvsi_ynrst_o      ,
+        output logic             oe_dvsi_yclk_o       ,
+        output logic             oe_dvsi_sxy_o        ,
+        output logic             oe_dvsi_xclk_o       ,
+        output logic             oe_dvsi_xnrst_o      ,
+        output logic             oe_dvsi_cfg0_o       ,
+        output logic             oe_dvsi_cfg1_o       ,
+        output logic             oe_dvsi_cfg2_o       ,
+        output logic             oe_dvsi_cfg3_o       ,
+        output logic             oe_dvsi_cfg4_o       ,
+        output logic             oe_dvsi_cfg5_o       ,
+        output logic             oe_dvsi_cfg6_o       ,
+        output logic             oe_dvsi_cfg7_o
+        */       
     );
 
     logic        s_test_clk;
@@ -271,6 +358,40 @@ module safe_domain #(
         .cam_hsync_o           ( cam_hsync_o           ),
         .cam_vsync_o           ( cam_vsync_o           ),
 
+        /* DVSI */
+        .dvsi_asa_i            ( dvsi_asa_i            ),
+        .dvsi_are_i            ( dvsi_are_i            ),
+        .dvsi_asy_i            ( dvsi_asy_i            ),
+        .dvsi_ynrst_i          ( dvsi_ynrst_i          ),
+        .dvsi_yclk_i           ( dvsi_yclk_i           ),
+        .dvsi_sxy_i            ( dvsi_sxy_i            ),
+        .dvsi_xclk_i           ( dvsi_xclk_i           ),
+        .dvsi_xnrst_i          ( dvsi_xnrst_i          ),
+        .dvsi_cfg0_i           ( dvsi_cfg0_i           ),
+        .dvsi_cfg1_i           ( dvsi_cfg1_i           ),
+        .dvsi_cfg2_i           ( dvsi_cfg2_i           ),
+        .dvsi_cfg3_i           ( dvsi_cfg3_i           ),
+        .dvsi_cfg4_i           ( dvsi_cfg4_i           ),
+        .dvsi_cfg5_i           ( dvsi_cfg5_i           ),
+        .dvsi_cfg6_i           ( dvsi_cfg6_i           ),
+        .dvsi_cfg7_i           ( dvsi_cfg7_i           ),
+        .dvsi_xydata0_o        ( dvsi_xydata0_o        ),
+        .dvsi_xydata1_o        ( dvsi_xydata1_o        ),
+        .dvsi_xydata2_o        ( dvsi_xydata2_o        ),
+        .dvsi_xydata3_o        ( dvsi_xydata3_o        ),
+        .dvsi_xydata4_o        ( dvsi_xydata4_o        ),
+        .dvsi_xydata5_o        ( dvsi_xydata5_o        ),
+        .dvsi_xydata6_o        ( dvsi_xydata6_o        ),
+        .dvsi_xydata7_o        ( dvsi_xydata7_o        ),
+        .dvsi_on0_o            ( dvsi_on0_o            ),
+        .dvsi_on1_o            ( dvsi_on1_o            ),
+        .dvsi_on2_o            ( dvsi_on2_o            ),
+        .dvsi_on3_o            ( dvsi_on3_o            ),
+        .dvsi_off0_o           ( dvsi_off0_o           ),
+        .dvsi_off1_o           ( dvsi_off1_o           ),
+        .dvsi_off2_o           ( dvsi_off2_o           ),
+        .dvsi_off3_o           ( dvsi_off3_o           ),
+
         .timer0_i              ( timer0_i              ),
         .timer1_i              ( timer1_i              ),
         .timer2_i              ( timer2_i              ),
@@ -308,6 +429,23 @@ module safe_domain #(
         .out_i2s0_ws_o         ( out_i2s0_ws_o         ),
         .out_i2s0_sdi_o        ( out_i2s0_sdi_o        ),
         .out_i2s1_sdi_o        ( out_i2s1_sdi_o        ),
+        /* DVSI */
+        .out_dvsi_asa_o        ( out_dvsi_asa_o        ),
+        .out_dvsi_are_o        ( out_dvsi_are_o        ),
+        .out_dvsi_asy_o        ( out_dvsi_asy_o        ),
+        .out_dvsi_ynrst_o      ( out_dvsi_ynrst_o      ),
+        .out_dvsi_yclk_o       ( out_dvsi_yclk_o       ),
+        .out_dvsi_sxy_o        ( out_dvsi_sxy_o        ),
+        .out_dvsi_xclk_o       ( out_dvsi_xclk_o       ),
+        .out_dvsi_xnrst_o      ( out_dvsi_xnrst_o      ),
+        .out_dvsi_cfg0_o       ( out_dvsi_cfg0_o       ),
+        .out_dvsi_cfg1_o       ( out_dvsi_cfg1_o       ),
+        .out_dvsi_cfg2_o       ( out_dvsi_cfg2_o       ),
+        .out_dvsi_cfg3_o       ( out_dvsi_cfg3_o       ),
+        .out_dvsi_cfg4_o       ( out_dvsi_cfg4_o       ),
+        .out_dvsi_cfg5_o       ( out_dvsi_cfg5_o       ),
+        .out_dvsi_cfg6_o       ( out_dvsi_cfg6_o       ),
+        .out_dvsi_cfg7_o       ( out_dvsi_cfg7_o       ),
 
         .in_spim_sdio0_i       ( in_spim_sdio0_i       ),
         .in_spim_sdio1_i       ( in_spim_sdio1_i       ),
@@ -341,6 +479,23 @@ module safe_domain #(
         .in_i2s0_ws_i          ( in_i2s0_ws_i          ),
         .in_i2s0_sdi_i         ( in_i2s0_sdi_i         ),
         .in_i2s1_sdi_i         ( in_i2s1_sdi_i         ),
+        /* DVSI */
+        .in_dvsi_xydata0_i     ( in_dvsi_xydata0_i     ),
+        .in_dvsi_xydata1_i     ( in_dvsi_xydata1_i     ),
+        .in_dvsi_xydata2_i     ( in_dvsi_xydata2_i     ),
+        .in_dvsi_xydata3_i     ( in_dvsi_xydata3_i     ),
+        .in_dvsi_xydata4_i     ( in_dvsi_xydata4_i     ),
+        .in_dvsi_xydata5_i     ( in_dvsi_xydata5_i     ),
+        .in_dvsi_xydata6_i     ( in_dvsi_xydata6_i     ),
+        .in_dvsi_xydata7_i     ( in_dvsi_xydata7_i     ),
+        .in_dvsi_on0_i         ( in_dvsi_on0_i         ),
+        .in_dvsi_on1_i         ( in_dvsi_on1_i         ),
+        .in_dvsi_on2_i         ( in_dvsi_on2_i         ),
+        .in_dvsi_on3_i         ( in_dvsi_on3_i         ),
+        .in_dvsi_off0_i        ( in_dvsi_off0_i        ),
+        .in_dvsi_off1_i        ( in_dvsi_off1_i        ),
+        .in_dvsi_off2_i        ( in_dvsi_off2_i        ),
+        .in_dvsi_off3_i        ( in_dvsi_off3_i        ),
 
         .oe_spim_sdio0_o       ( oe_spim_sdio0_o       ),
         .oe_spim_sdio1_o       ( oe_spim_sdio1_o       ),
@@ -374,6 +529,25 @@ module safe_domain #(
         .oe_i2s0_ws_o          ( oe_i2s0_ws_o          ),
         .oe_i2s0_sdi_o         ( oe_i2s0_sdi_o         ),
         .oe_i2s1_sdi_o         ( oe_i2s1_sdi_o         ),
+        /* DVSI */
+        /*
+        .oe_dvsi_asa_o         ( oe_dvsi_asa_o         ),
+        .oe_dvsi_are_o         ( oe_dvsi_are_o         ),
+        .oe_dvsi_asy_o         ( oe_dvsi_asy_o         ),
+        .oe_dvsi_ynrst_o       ( oe_dvsi_ynrst_o       ),
+        .oe_dvsi_yclk_o        ( oe_dvsi_yclk_o        ),
+        .oe_dvsi_sxy_o         ( oe_dvsi_sxy_o         ),
+        .oe_dvsi_xclk_o        ( oe_dvsi_xclk_o        ),
+        .oe_dvsi_xnrst_o       ( oe_dvsi_xnrst_o       ),
+        .oe_dvsi_cfg0_o        ( oe_dvsi_cfg0_o        ),
+        .oe_dvsi_cfg1_o        ( oe_dvsi_cfg1_o        ),
+        .oe_dvsi_cfg2_o        ( oe_dvsi_cfg2_o        ),
+        .oe_dvsi_cfg3_o        ( oe_dvsi_cfg3_o        ),
+        .oe_dvsi_cfg4_o        ( oe_dvsi_cfg4_o        ),
+        .oe_dvsi_cfg5_o        ( oe_dvsi_cfg5_o        ),
+        .oe_dvsi_cfg6_o        ( oe_dvsi_cfg6_o        ),
+        .oe_dvsi_cfg7_o        ( oe_dvsi_cfg7_o        ),
+        */
 
         .*
     );
@@ -425,12 +599,12 @@ module safe_domain #(
 
     generate
        for (i=0; i<32; i++)
-	 begin : GEN_GPIO_CFG_I
-	    for (j=0; j<6; j++)
-	      begin : GEN_GPIO_CFG_J
-		 assign s_gpio_cfg[i][j] = gpio_cfg_i[j+6*i];
-	      end
-	 end
+     begin : GEN_GPIO_CFG_I
+        for (j=0; j<6; j++)
+          begin : GEN_GPIO_CFG_J
+         assign s_gpio_cfg[i][j] = gpio_cfg_i[j+6*i];
+          end
+     end
     endgenerate
 
 endmodule // safe_domain

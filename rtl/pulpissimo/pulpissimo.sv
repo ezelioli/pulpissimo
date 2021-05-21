@@ -53,6 +53,39 @@ module pulpissimo #(
   inout wire pad_i2s0_sdi,
   inout wire pad_i2s1_sdi,
 
+  inout wire pad_dvsi_asa,
+  inout wire pad_dvsi_are,
+  inout wire pad_dvsi_asy,
+  inout wire pad_dvsi_ynrst,
+  inout wire pad_dvsi_yclk,
+  inout wire pad_dvsi_sxy,
+  inout wire pad_dvsi_xclk,
+  inout wire pad_dvsi_xnrst,
+  inout wire pad_dvsi_cfg0,
+  inout wire pad_dvsi_cfg1,
+  inout wire pad_dvsi_cfg2,
+  inout wire pad_dvsi_cfg3,
+  inout wire pad_dvsi_cfg4,
+  inout wire pad_dvsi_cfg5,
+  inout wire pad_dvsi_cfg6,
+  inout wire pad_dvsi_cfg7,
+  inout wire pad_dvsi_xydata0,
+  inout wire pad_dvsi_xydata1,
+  inout wire pad_dvsi_xydata2,
+  inout wire pad_dvsi_xydata3,
+  inout wire pad_dvsi_xydata4,
+  inout wire pad_dvsi_xydata5,
+  inout wire pad_dvsi_xydata6,
+  inout wire pad_dvsi_xydata7,
+  inout wire pad_dvsi_on0,
+  inout wire pad_dvsi_on1,
+  inout wire pad_dvsi_on2,
+  inout wire pad_dvsi_on3,
+  inout wire pad_dvsi_off0,
+  inout wire pad_dvsi_off1,
+  inout wire pad_dvsi_off2,
+  inout wire pad_dvsi_off3,
+
   inout wire pad_reset_n,
   inout wire pad_bootsel,
 
@@ -118,6 +151,23 @@ module pulpissimo #(
   logic s_out_i2s0_ws;
   logic s_out_i2s0_sdi;
   logic s_out_i2s1_sdi;
+  /* DVSI */
+  logic s_out_dvsi_asa;
+  logic s_out_dvsi_are;
+  logic s_out_dvsi_asy;
+  logic s_out_dvsi_ynrst;
+  logic s_out_dvsi_yclk;
+  logic s_out_dvsi_sxy;
+  logic s_out_dvsi_xclk;
+  logic s_out_dvsi_xnrst;
+  logic s_out_dvsi_cfg0;
+  logic s_out_dvsi_cfg1;
+  logic s_out_dvsi_cfg2;
+  logic s_out_dvsi_cfg3;
+  logic s_out_dvsi_cfg4;
+  logic s_out_dvsi_cfg5;
+  logic s_out_dvsi_cfg6;
+  logic s_out_dvsi_cfg7;
 
   logic s_in_spim_sdio0;
   logic s_in_spim_sdio1;
@@ -151,6 +201,23 @@ module pulpissimo #(
   logic s_in_i2s0_ws;
   logic s_in_i2s0_sdi;
   logic s_in_i2s1_sdi;
+  /* DVSI */
+  logic s_in_dvsi_xydata0;
+  logic s_in_dvsi_xydata1;
+  logic s_in_dvsi_xydata2;
+  logic s_in_dvsi_xydata3;
+  logic s_in_dvsi_xydata4;
+  logic s_in_dvsi_xydata5;
+  logic s_in_dvsi_xydata6;
+  logic s_in_dvsi_xydata7;
+  logic s_in_dvsi_on0;
+  logic s_in_dvsi_on1;
+  logic s_in_dvsi_on2;
+  logic s_in_dvsi_on3;
+  logic s_in_dvsi_off0;
+  logic s_in_dvsi_off1;
+  logic s_in_dvsi_off2;
+  logic s_in_dvsi_off3;
 
   logic s_oe_spim_sdio0;
   logic s_oe_spim_sdio1;
@@ -184,6 +251,25 @@ module pulpissimo #(
   logic s_oe_i2s0_ws;
   logic s_oe_i2s0_sdi;
   logic s_oe_i2s1_sdi;
+  /* DVSI */
+  /*
+  logic s_oe_dvsi_asa; 
+  logic s_oe_dvsi_are; 
+  logic s_oe_dvsi_asy; 
+  logic s_oe_dvsi_ynrst;
+  logic s_oe_dvsi_yclk;
+  logic s_oe_dvsi_sxy; 
+  logic s_oe_dvsi_xclk;
+  logic s_oe_dvsi_xnrst;
+  logic s_oe_dvsi_cfg0;
+  logic s_oe_dvsi_cfg1;
+  logic s_oe_dvsi_cfg2;
+  logic s_oe_dvsi_cfg3;
+  logic s_oe_dvsi_cfg4;
+  logic s_oe_dvsi_cfg5;
+  logic s_oe_dvsi_cfg6;
+  logic s_oe_dvsi_cfg7;
+  */
 
   //
   // OTHER PAD FRAME SIGNALS
@@ -299,6 +385,42 @@ module pulpissimo #(
   logic [7:0]                  s_cam_data;
   logic                        s_cam_hsync;
   logic                        s_cam_vsync;
+
+  /* DVSI */
+  logic                        s_dvsi_asa;
+  logic                        s_dvsi_are;
+  logic                        s_dvsi_asy;
+  logic                        s_dvsi_ynrst;
+  logic                        s_dvsi_yclk;
+  logic                        s_dvsi_sxy;
+  logic                        s_dvsi_xclk;
+  logic                        s_dvsi_xnrst;
+  logic                        s_dvsi_cfg0;
+  logic                        s_dvsi_cfg1;
+  logic                        s_dvsi_cfg2;
+  logic                        s_dvsi_cfg3;
+  logic                        s_dvsi_cfg4;
+  logic                        s_dvsi_cfg5;
+  logic                        s_dvsi_cfg6;
+  logic                        s_dvsi_cfg7;
+  logic                        s_dvsi_xydata0;
+  logic                        s_dvsi_xydata1;
+  logic                        s_dvsi_xydata2;
+  logic                        s_dvsi_xydata3;
+  logic                        s_dvsi_xydata4;
+  logic                        s_dvsi_xydata5;
+  logic                        s_dvsi_xydata6;
+  logic                        s_dvsi_xydata7;
+  logic                        s_dvsi_on0;
+  logic                        s_dvsi_on1;
+  logic                        s_dvsi_on2;
+  logic                        s_dvsi_on3;
+  logic                        s_dvsi_off0;
+  logic                        s_dvsi_off1;
+  logic                        s_dvsi_off2;
+  logic                        s_dvsi_off3;
+
+
   logic [3:0]                  s_timer0;
   logic [3:0]                  s_timer1;
   logic [3:0]                  s_timer2;
@@ -415,6 +537,25 @@ module pulpissimo #(
     .oe_i2c0_scl_i         ( s_oe_i2c0_scl          ),
     .oe_uart_rx_i          ( s_oe_uart_rx           ),
     .oe_uart_tx_i          ( s_oe_uart_tx           ),
+    /* DVSI */
+    /*
+    .oe_dvsi_asa_i         ( s_oe_dvsi_asa          ),
+    .oe_dvsi_are_i         ( s_oe_dvsi_are          ),
+    .oe_dvsi_asy_i         ( s_oe_dvsi_asy          ),
+    .oe_dvsi_ynrst_i       ( s_oe_dvsi_ynrst        ),
+    .oe_dvsi_yclk_i        ( s_oe_dvsi_yclk         ),
+    .oe_dvsi_sxy_i         ( s_oe_dvsi_sxy          ),
+    .oe_dvsi_xclk_i        ( s_oe_dvsi_xclk         ),
+    .oe_dvsi_xnrst_i       ( s_oe_dvsi_xnrst        ),
+    .oe_dvsi_cfg0_i        ( s_oe_dvsi_cfg0         ),
+    .oe_dvsi_cfg1_i        ( s_oe_dvsi_cfg1         ),
+    .oe_dvsi_cfg2_i        ( s_oe_dvsi_cfg2         ),
+    .oe_dvsi_cfg3_i        ( s_oe_dvsi_cfg3         ),
+    .oe_dvsi_cfg4_i        ( s_oe_dvsi_cfg4         ),
+    .oe_dvsi_cfg5_i        ( s_oe_dvsi_cfg5         ),
+    .oe_dvsi_cfg6_i        ( s_oe_dvsi_cfg6         ),
+    .oe_dvsi_cfg7_i        ( s_oe_dvsi_cfg7         ),
+    */
 
     .out_spim_sdio0_i      ( s_out_spim_sdio0       ),
     .out_spim_sdio1_i      ( s_out_spim_sdio1       ),
@@ -448,6 +589,23 @@ module pulpissimo #(
     .out_i2c0_scl_i        ( s_out_i2c0_scl         ),
     .out_uart_rx_i         ( s_out_uart_rx          ),
     .out_uart_tx_i         ( s_out_uart_tx          ),
+    /* DVSI */
+    .out_dvsi_asa_i        ( s_out_dvsi_asa         ),
+    .out_dvsi_are_i        ( s_out_dvsi_are         ),
+    .out_dvsi_asy_i        ( s_out_dvsi_asy         ),
+    .out_dvsi_ynrst_i      ( s_out_dvsi_ynrst       ),
+    .out_dvsi_yclk_i       ( s_out_dvsi_yclk        ),
+    .out_dvsi_sxy_i        ( s_out_dvsi_sxy         ),
+    .out_dvsi_xclk_i       ( s_out_dvsi_xclk        ),
+    .out_dvsi_xnrst_i      ( s_out_dvsi_xnrst       ),
+    .out_dvsi_cfg0_i       ( s_out_dvsi_cfg0        ),
+    .out_dvsi_cfg1_i       ( s_out_dvsi_cfg1        ),
+    .out_dvsi_cfg2_i       ( s_out_dvsi_cfg2        ),
+    .out_dvsi_cfg3_i       ( s_out_dvsi_cfg3        ),
+    .out_dvsi_cfg4_i       ( s_out_dvsi_cfg4        ),
+    .out_dvsi_cfg5_i       ( s_out_dvsi_cfg5        ),
+    .out_dvsi_cfg6_i       ( s_out_dvsi_cfg6        ),
+    .out_dvsi_cfg7_i       ( s_out_dvsi_cfg7        ),
 
     .in_spim_sdio0_o       ( s_in_spim_sdio0        ),
     .in_spim_sdio1_o       ( s_in_spim_sdio1        ),
@@ -481,6 +639,24 @@ module pulpissimo #(
     .in_i2c0_scl_o         ( s_in_i2c0_scl          ),
     .in_uart_rx_o          ( s_in_uart_rx           ),
     .in_uart_tx_o          ( s_in_uart_tx           ),
+    /* DVSI */
+    .in_dvsi_xydata0_o     ( s_in_dvsi_xydata0      ),
+    .in_dvsi_xydata1_o     ( s_in_dvsi_xydata1      ),
+    .in_dvsi_xydata2_o     ( s_in_dvsi_xydata2      ),
+    .in_dvsi_xydata3_o     ( s_in_dvsi_xydata3      ),
+    .in_dvsi_xydata4_o     ( s_in_dvsi_xydata4      ),
+    .in_dvsi_xydata5_o     ( s_in_dvsi_xydata5      ),
+    .in_dvsi_xydata6_o     ( s_in_dvsi_xydata6      ),
+    .in_dvsi_xydata7_o     ( s_in_dvsi_xydata7      ),
+    .in_dvsi_on0_o         ( s_in_dvsi_on0          ),
+    .in_dvsi_on1_o         ( s_in_dvsi_on1          ),
+    .in_dvsi_on2_o         ( s_in_dvsi_on2          ),
+    .in_dvsi_on3_o         ( s_in_dvsi_on3          ),
+    .in_dvsi_off0_o        ( s_in_dvsi_off0         ),
+    .in_dvsi_off1_o        ( s_in_dvsi_off1         ),
+    .in_dvsi_off2_o        ( s_in_dvsi_off2         ),
+    .in_dvsi_off3_o        ( s_in_dvsi_off3         ),
+    
     .bootsel_o             ( s_bootsel              ),
 
     //EXT CHIP to PAD
@@ -516,6 +692,39 @@ module pulpissimo #(
     .pad_i2c0_scl          ( pad_i2c0_scl           ),
     .pad_uart_rx           ( pad_uart_rx            ),
     .pad_uart_tx           ( pad_uart_tx            ),
+    /* DVSI */
+    .pad_dvsi_asa          ( pad_dvsi_asa           ),
+    .pad_dvsi_are          ( pad_dvsi_are           ),
+    .pad_dvsi_asy          ( pad_dvsi_asy           ),
+    .pad_dvsi_ynrst        ( pad_dvsi_ynrst         ),
+    .pad_dvsi_yclk         ( pad_dvsi_yclk          ),
+    .pad_dvsi_sxy          ( pad_dvsi_sxy           ),
+    .pad_dvsi_xclk         ( pad_dvsi_xclk          ),
+    .pad_dvsi_xnrst        ( pad_dvsi_xnrst         ),
+    .pad_dvsi_cfg0         ( pad_dvsi_cfg0          ),
+    .pad_dvsi_cfg1         ( pad_dvsi_cfg1          ),
+    .pad_dvsi_cfg2         ( pad_dvsi_cfg2          ),
+    .pad_dvsi_cfg3         ( pad_dvsi_cfg3          ),
+    .pad_dvsi_cfg4         ( pad_dvsi_cfg4          ),
+    .pad_dvsi_cfg5         ( pad_dvsi_cfg5          ),
+    .pad_dvsi_cfg6         ( pad_dvsi_cfg6          ),
+    .pad_dvsi_cfg7         ( pad_dvsi_cfg7          ),
+    .pad_dvsi_xydata0      ( pad_dvsi_xydata0       ),
+    .pad_dvsi_xydata1      ( pad_dvsi_xydata1       ),
+    .pad_dvsi_xydata2      ( pad_dvsi_xydata2       ),
+    .pad_dvsi_xydata3      ( pad_dvsi_xydata3       ),
+    .pad_dvsi_xydata4      ( pad_dvsi_xydata4       ),
+    .pad_dvsi_xydata5      ( pad_dvsi_xydata5       ),
+    .pad_dvsi_xydata6      ( pad_dvsi_xydata6       ),
+    .pad_dvsi_xydata7      ( pad_dvsi_xydata7       ),
+    .pad_dvsi_on0          ( pad_dvsi_on0           ),
+    .pad_dvsi_on1          ( pad_dvsi_on1           ),
+    .pad_dvsi_on2          ( pad_dvsi_on2           ),
+    .pad_dvsi_on3          ( pad_dvsi_on3           ),
+    .pad_dvsi_off0         ( pad_dvsi_off0          ),
+    .pad_dvsi_off1         ( pad_dvsi_off1          ),
+    .pad_dvsi_off2         ( pad_dvsi_off2          ),
+    .pad_dvsi_off3         ( pad_dvsi_off3          ),
 
     .pad_bootsel           ( pad_bootsel            ),
     .pad_reset_n           ( pad_reset_n            ),
@@ -534,7 +743,7 @@ module pulpissimo #(
 
         .ref_clk_i                  ( s_ref_clk                   ),
         .slow_clk_o                 ( s_slow_clk                  ),
-        .rst_ni                     ( s_rstn                     ),
+        .rst_ni                     ( s_rstn                      ),
 
         .rst_no                     ( s_rstn_por                  ),
 
@@ -591,6 +800,40 @@ module pulpissimo #(
         .cam_hsync_o                ( s_cam_hsync                 ),
         .cam_vsync_o                ( s_cam_vsync                 ),
 
+        /* DVSI */
+        .dvsi_asa_i                 ( s_dvsi_asa                  ),
+        .dvsi_are_i                 ( s_dvsi_are                  ),
+        .dvsi_asy_i                 ( s_dvsi_asy                  ),
+        .dvsi_ynrst_i               ( s_dvsi_ynrst                ),
+        .dvsi_yclk_i                ( s_dvsi_yclk                 ),
+        .dvsi_sxy_i                 ( s_dvsi_sxy                  ),
+        .dvsi_xclk_i                ( s_dvsi_xclk                 ),
+        .dvsi_xnrst_i               ( s_dvsi_xnrst                ),
+        .dvsi_cfg0_i                ( s_dvsi_cfg0                 ),
+        .dvsi_cfg1_i                ( s_dvsi_cfg1                 ),
+        .dvsi_cfg2_i                ( s_dvsi_cfg2                 ),
+        .dvsi_cfg3_i                ( s_dvsi_cfg3                 ),
+        .dvsi_cfg4_i                ( s_dvsi_cfg4                 ),
+        .dvsi_cfg5_i                ( s_dvsi_cfg5                 ),
+        .dvsi_cfg6_i                ( s_dvsi_cfg6                 ),
+        .dvsi_cfg7_i                ( s_dvsi_cfg7                 ),
+        .dvsi_xydata0_o             ( s_dvsi_xydata0              ),
+        .dvsi_xydata1_o             ( s_dvsi_xydata1              ),
+        .dvsi_xydata2_o             ( s_dvsi_xydata2              ),
+        .dvsi_xydata3_o             ( s_dvsi_xydata3              ),
+        .dvsi_xydata4_o             ( s_dvsi_xydata4              ),
+        .dvsi_xydata5_o             ( s_dvsi_xydata5              ),
+        .dvsi_xydata6_o             ( s_dvsi_xydata6              ),
+        .dvsi_xydata7_o             ( s_dvsi_xydata7              ),
+        .dvsi_on0_o                 ( s_dvsi_on0                  ),
+        .dvsi_on1_o                 ( s_dvsi_on1                  ),
+        .dvsi_on2_o                 ( s_dvsi_on2                  ),
+        .dvsi_on3_o                 ( s_dvsi_on3                  ),
+        .dvsi_off0_o                ( s_dvsi_off0                 ),
+        .dvsi_off1_o                ( s_dvsi_off1                 ),
+        .dvsi_off2_o                ( s_dvsi_off2                 ),
+        .dvsi_off3_o                ( s_dvsi_off3                 ),
+
         .timer0_i                   ( s_timer0                    ),
         .timer1_i                   ( s_timer1                    ),
         .timer2_i                   ( s_timer2                    ),
@@ -633,6 +876,24 @@ module pulpissimo #(
         .out_i2s0_sdi_o             ( s_out_i2s0_sdi              ),
         .out_i2s1_sdi_o             ( s_out_i2s1_sdi              ),
 
+        /* DVSI */
+        .out_dvsi_asa_o             ( s_out_dvsi_asa              ),
+        .out_dvsi_are_o             ( s_out_dvsi_are              ),
+        .out_dvsi_asy_o             ( s_out_dvsi_asy              ),
+        .out_dvsi_ynrst_o           ( s_out_dvsi_ynrst            ),
+        .out_dvsi_yclk_o            ( s_out_dvsi_yclk             ),
+        .out_dvsi_sxy_o             ( s_out_dvsi_sxy              ),
+        .out_dvsi_xclk_o            ( s_out_dvsi_xclk             ),
+        .out_dvsi_xnrst_o           ( s_out_dvsi_xnrst            ),
+        .out_dvsi_cfg0_o            ( s_out_dvsi_cfg0             ),
+        .out_dvsi_cfg1_o            ( s_out_dvsi_cfg1             ),
+        .out_dvsi_cfg2_o            ( s_out_dvsi_cfg2             ),
+        .out_dvsi_cfg3_o            ( s_out_dvsi_cfg3             ),
+        .out_dvsi_cfg4_o            ( s_out_dvsi_cfg4             ),
+        .out_dvsi_cfg5_o            ( s_out_dvsi_cfg5             ),
+        .out_dvsi_cfg6_o            ( s_out_dvsi_cfg6             ),
+        .out_dvsi_cfg7_o            ( s_out_dvsi_cfg7             ),
+
         .in_spim_sdio0_i            ( s_in_spim_sdio0             ),
         .in_spim_sdio1_i            ( s_in_spim_sdio1             ),
         .in_spim_sdio2_i            ( s_in_spim_sdio2             ),
@@ -669,6 +930,24 @@ module pulpissimo #(
         .in_i2s0_sdi_i              ( s_in_i2s0_sdi               ),
         .in_i2s1_sdi_i              ( s_in_i2s1_sdi               ),
 
+        /* DVSI */
+        .in_dvsi_xydata0_i          ( s_in_dvsi_xydata0           ),
+        .in_dvsi_xydata1_i          ( s_in_dvsi_xydata1           ),
+        .in_dvsi_xydata2_i          ( s_in_dvsi_xydata2           ),
+        .in_dvsi_xydata3_i          ( s_in_dvsi_xydata3           ),
+        .in_dvsi_xydata4_i          ( s_in_dvsi_xydata4           ),
+        .in_dvsi_xydata5_i          ( s_in_dvsi_xydata5           ),
+        .in_dvsi_xydata6_i          ( s_in_dvsi_xydata6           ),
+        .in_dvsi_xydata7_i          ( s_in_dvsi_xydata7           ),
+        .in_dvsi_on0_i              ( s_in_dvsi_on0               ),
+        .in_dvsi_on1_i              ( s_in_dvsi_on1               ),
+        .in_dvsi_on2_i              ( s_in_dvsi_on2               ),
+        .in_dvsi_on3_i              ( s_in_dvsi_on3               ),
+        .in_dvsi_off0_i             ( s_in_dvsi_off0              ),
+        .in_dvsi_off1_i             ( s_in_dvsi_off1              ),
+        .in_dvsi_off2_i             ( s_in_dvsi_off2              ),
+        .in_dvsi_off3_i             ( s_in_dvsi_off3              ),
+
         .oe_spim_sdio0_o            ( s_oe_spim_sdio0             ),
         .oe_spim_sdio1_o            ( s_oe_spim_sdio1             ),
         .oe_spim_sdio2_o            ( s_oe_spim_sdio2             ),
@@ -704,6 +983,26 @@ module pulpissimo #(
         .oe_i2s0_ws_o               ( s_oe_i2s0_ws                ),
         .oe_i2s0_sdi_o              ( s_oe_i2s0_sdi               ),
         .oe_i2s1_sdi_o              ( s_oe_i2s1_sdi               ),
+
+        /* DVSI */
+        /*
+        .oe_dvsi_asa_o              ( s_oe_dvsi_asa               ),
+        .oe_dvsi_are_o              ( s_oe_dvsi_are               ),
+        .oe_dvsi_asy_o              ( s_oe_dvsi_asy               ),
+        .oe_dvsi_ynrst_o            ( s_oe_dvsi_ynrst             ),
+        .oe_dvsi_yclk_o             ( s_oe_dvsi_yclk              ),
+        .oe_dvsi_sxy_o              ( s_oe_dvsi_sxy               ),
+        .oe_dvsi_xclk_o             ( s_oe_dvsi_xclk              ),
+        .oe_dvsi_xnrst_o            ( s_oe_dvsi_xnrst             ),
+        .oe_dvsi_cfg0_o             ( s_oe_dvsi_cfg0              ),
+        .oe_dvsi_cfg1_o             ( s_oe_dvsi_cfg1              ),
+        .oe_dvsi_cfg2_o             ( s_oe_dvsi_cfg2              ),
+        .oe_dvsi_cfg3_o             ( s_oe_dvsi_cfg3              ),
+        .oe_dvsi_cfg4_o             ( s_oe_dvsi_cfg4              ),
+        .oe_dvsi_cfg5_o             ( s_oe_dvsi_cfg5              ),
+        .oe_dvsi_cfg6_o             ( s_oe_dvsi_cfg6              ),
+        .oe_dvsi_cfg7_o             ( s_oe_dvsi_cfg7              ),
+        */
 
         .*
    );
@@ -767,6 +1066,40 @@ module pulpissimo #(
         .cam_data_i                   ( s_cam_data                       ),
         .cam_hsync_i                  ( s_cam_hsync                      ),
         .cam_vsync_i                  ( s_cam_vsync                      ),
+
+        /* DVSI */
+        .dvsi_asa_o                   ( s_dvsi_asa                       ),
+        .dvsi_are_o                   ( s_dvsi_are                       ),
+        .dvsi_asy_o                   ( s_dvsi_asy                       ),
+        .dvsi_ynrst_o                 ( s_dvsi_ynrst                     ),
+        .dvsi_yclk_o                  ( s_dvsi_yclk                      ),
+        .dvsi_sxy_o                   ( s_dvsi_sxy                       ),
+        .dvsi_xclk_o                  ( s_dvsi_xclk                      ),
+        .dvsi_xnrst_o                 ( s_dvsi_xnrst                     ),
+        .dvsi_cfg0_o                  ( s_dvsi_cfg0                      ),
+        .dvsi_cfg1_o                  ( s_dvsi_cfg1                      ),
+        .dvsi_cfg2_o                  ( s_dvsi_cfg2                      ),
+        .dvsi_cfg3_o                  ( s_dvsi_cfg3                      ),
+        .dvsi_cfg4_o                  ( s_dvsi_cfg4                      ),
+        .dvsi_cfg5_o                  ( s_dvsi_cfg5                      ),
+        .dvsi_cfg6_o                  ( s_dvsi_cfg6                      ),
+        .dvsi_cfg7_o                  ( s_dvsi_cfg7                      ),
+        .dvsi_xydata0_i               ( s_dvsi_xydata0                   ),
+        .dvsi_xydata1_i               ( s_dvsi_xydata1                   ),
+        .dvsi_xydata2_i               ( s_dvsi_xydata2                   ),
+        .dvsi_xydata3_i               ( s_dvsi_xydata3                   ),
+        .dvsi_xydata4_i               ( s_dvsi_xydata4                   ),
+        .dvsi_xydata5_i               ( s_dvsi_xydata5                   ),
+        .dvsi_xydata6_i               ( s_dvsi_xydata6                   ),
+        .dvsi_xydata7_i               ( s_dvsi_xydata7                   ),
+        .dvsi_on0_i                   ( s_dvsi_on0                       ),
+        .dvsi_on1_i                   ( s_dvsi_on1                       ),
+        .dvsi_on2_i                   ( s_dvsi_on2                       ),
+        .dvsi_on3_i                   ( s_dvsi_on3                       ),
+        .dvsi_off0_i                  ( s_dvsi_off0                      ),
+        .dvsi_off1_i                  ( s_dvsi_off1                      ),
+        .dvsi_off2_i                  ( s_dvsi_off2                      ),
+        .dvsi_off3_i                  ( s_dvsi_off3                      ),
 
         .timer_ch0_o                  ( s_timer0                         ),
         .timer_ch1_o                  ( s_timer1                         ),
