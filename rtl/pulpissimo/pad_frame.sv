@@ -302,7 +302,7 @@ module pad_frame
     pad_functional_input padinst_dvsi_off3     ( .O(in_dvsi_off3_o   ), .PAD(pad_dvsi_off3   ) );
 
     pad_functional_output padinst_dvsi_asa     ( .I(out_dvsi_asa_i   ), .PAD(pad_dvsi_asa   ) );
-    pad_functional_output padinst_dvsi_ara     ( .I(out_dvsi_are_i   ), .PAD(pad_dvsi_are   ) );
+    pad_functional_output padinst_dvsi_are     ( .I(out_dvsi_are_i   ), .PAD(pad_dvsi_are   ) );
     pad_functional_output padinst_dvsi_asy     ( .I(out_dvsi_asy_i   ), .PAD(pad_dvsi_asy   ) );
     pad_functional_output padinst_dvsi_ynrst   ( .I(out_dvsi_ynrst_i ), .PAD(pad_dvsi_ynrst ) );
     pad_functional_output padinst_dvsi_yclk    ( .I(out_dvsi_yclk_i  ), .PAD(pad_dvsi_yclk  ) );

@@ -54,7 +54,7 @@ checkout: bender
 	./bender update
 	touch Bender.lock
 	$(MAKE) scripts
-	cd rtl/tb && $(MAKE) alla
+	cd rtl/tb && $(MAKE) links
 
 Bender.lock: bender
 	./bender update
