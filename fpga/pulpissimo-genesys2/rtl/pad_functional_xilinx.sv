@@ -46,3 +46,60 @@ module pad_functional_pu
   );
 
 endmodule
+
+//module pad_functional_input
+//(
+//   output logic             O,
+//   input  logic             PAD
+//);
+//
+//  IBUF ibuf_i (
+//    .O ( O    ),
+//    .I ( PAD  )
+//  );
+//
+//endmodule
+//
+//module pad_functional_output
+//(
+//  input logic       I,
+//  output logic      PAD
+//);
+//
+// OBUF obuf_i (
+//  .I(I),
+//  .O(PAD)
+// );
+//
+//endmodule
+
+module pad_functional_input
+(
+  output logic O,
+  input  logic PAD
+);
+
+  (* PULLDOWN = "YES" *)
+  IOBUF iobuf_i (
+    .T  ( 1'b1 ),
+    .I  (      ),
+    .O  ( O    ),
+    .IO ( PAD  )
+    );
+
+endmodule
+
+module pad_functional_output
+(
+  input  logic I,
+  output logic PAD
+);
+
+  IOBUF iobuf_i (
+    .T  ( 1'b0 ),
+    .I  ( I    ),
+    .O  (      ),
+    .IO ( PAD  )
+    );
+
+endmodule

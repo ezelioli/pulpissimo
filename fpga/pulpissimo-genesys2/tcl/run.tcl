@@ -9,18 +9,8 @@ set CONSTRS constraints
 create_project $PROJECT . -force -part $::env(XILINX_PART)
 set_property board_part $XILINX_BOARD [current_project]
 
-# set up includes
-source ../pulpissimo/tcl/ips_inc_dirs.tcl
-set_property include_dirs $INCLUDE_DIRS [current_fileset]
-set_property include_dirs $INCLUDE_DIRS [current_fileset -simset]
-
-# setup and add IP source files
-source ../pulpissimo/tcl/ips_src_files.tcl
-source ../pulpissimo/tcl/ips_add_files.tcl
-
-# setup and add RTL source files
-source ../pulpissimo/tcl/rtl_src_files.tcl
-source ../pulpissimo/tcl/rtl_add_files.tcl
+# Add sources
+source ../pulpissimo/tcl/add_sources.tcl
 
 # Override IPSApprox default variables
 set FPGA_RTL rtl
@@ -51,10 +41,11 @@ set CLK_HALFPERIOD_NS [expr ${FC_CLK_PERIOD_NS} / 2.0]
 add_files -norecurse $FPGA_RTL/xilinx_pulpissimo.v
 
 # Add Xilinx IPs
-read_ip $FPGA_IPS/xilinx_clk_mngr/xilinx_clk_mngr.srcs/sources_1/ip/xilinx_clk_mngr/xilinx_clk_mngr.xci
-read_ip $FPGA_IPS/xilinx_slow_clk_mngr/xilinx_slow_clk_mngr.srcs/sources_1/ip/xilinx_slow_clk_mngr/xilinx_slow_clk_mngr.xci
-read_ip $FPGA_IPS/xilinx_interleaved_ram/xilinx_interleaved_ram.srcs/sources_1/ip/xilinx_interleaved_ram/xilinx_interleaved_ram.xci
-read_ip $FPGA_IPS/xilinx_private_ram/xilinx_private_ram.srcs/sources_1/ip/xilinx_private_ram/xilinx_private_ram.xci
+read_ip $FPGA_IPS/xilinx_clk_mngr/ip/xilinx_clk_mngr.xci
+read_ip $FPGA_IPS/xilinx_slow_clk_mngr/ip/xilinx_slow_clk_mngr.xci
+read_ip $FPGA_IPS/xilinx_interleaved_ram/ip/xilinx_interleaved_ram.xci
+read_ip $FPGA_IPS/xilinx_private_ram/ip/xilinx_private_ram.xci
+read_ip $FPGA_IPS/xilinx_generic_ram/ip/xilinx_generic_ram.xci
 
 # Add wrappers and xilinx specific techcells
 add_files -norecurse $FPGA_RTL/fpga_clk_gen.sv
@@ -64,6 +55,7 @@ add_files -norecurse $FPGA_RTL/fpga_private_ram.sv
 add_files -norecurse $FPGA_RTL/fpga_bootrom.sv
 add_files -norecurse $FPGA_RTL/pad_functional_xilinx.sv
 add_files -norecurse $FPGA_RTL/pulp_clock_gating_xilinx.sv
+add_files -norecurse $FPGA_RTL/fpga_generic_ram.sv
 
 # Add patched riscv_ex_stage module (This should be removed once we have a
 # patched upstream repo version)

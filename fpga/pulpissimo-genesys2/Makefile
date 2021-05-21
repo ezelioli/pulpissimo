@@ -7,6 +7,9 @@ VIVADO ?= vivado
 
 .PHONY: help all gui ips clean-ips clk clean-clk ram clean-ram clean
 
+#Make sure BENDER environment variable is available for subprocesses in Make
+export BENDER
+
 all: ips ## Generate the bitstream for pulpissimo with vivado in batch mode. The vivado invocation command may be overriden with the env variable VIVADO.
 	$(VIVADO) -mode batch -source tcl/run.tcl
 
@@ -28,10 +31,12 @@ clean-clk: ## Removes all Clocking Wizard IP outputs
 ram: ## Synthesizes the Xilinx Block Memory Generator IPs for PULPissimo's L2 Ram
 	$(MAKE) -C ips/xilinx_interleaved_ram all
 	$(MAKE) -C ips/xilinx_private_ram all
+	$(MAKE) -C ips/xilinx_generic_ram all
 
 clean-ram: ## Removes all Block Ram IP outputs related to l2 ram
 	$(MAKE) -C ips/xilinx_interleaved_ram clean
 	$(MAKE) -C ips/xilinx_private_ram clean
+	$(MAKE) -C ips/xilinx_generic_ram clean
 
 clean: ## Removes all bitstreams, *.log files and vivado related files (rm -rf vivado*)
 	rm -rf ${PROJECT}.*[^'bit']

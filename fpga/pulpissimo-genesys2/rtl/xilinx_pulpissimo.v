@@ -67,6 +67,40 @@ module xilinx_pulpissimo
    inout wire  pad_i2c0_sda,
    inout wire  pad_i2c0_scl,
 
+   /* DVSI */
+   inout wire  pad_dvsi_asa    , //fmc_la_p[0] , //pad_dvsi_asa    ,
+   inout wire  pad_dvsi_are    , //fmc_la_p[1] , //pad_dvsi_are    ,
+   inout wire  pad_dvsi_asy    , //fmc_la_p[2] , //pad_dvsi_asy    ,
+   inout wire  pad_dvsi_ynrst  , //fmc_la_p[3] , //pad_dvsi_ynrst  ,
+   inout wire  pad_dvsi_yclk   , //fmc_la_p[4] , //pad_dvsi_yclk   ,
+   inout wire  pad_dvsi_sxy    , //fmc_la_p[5] , //pad_dvsi_sxy    ,
+   inout wire  pad_dvsi_xclk   , //fmc_la_p[6] , //pad_dvsi_xclk   ,
+   inout wire  pad_dvsi_xnrst  , //fmc_la_p[7] , //pad_dvsi_xnrst  ,
+   inout wire  pad_dvsi_cfg0   , //fmc_la_p[8] , //pad_dvsi_cfg0   ,
+   inout wire  pad_dvsi_cfg1   , //fmc_la_p[9] , //pad_dvsi_cfg1   ,
+   inout wire  pad_dvsi_cfg2   , //fmc_la_p[10], //pad_dvsi_cfg2   ,
+   inout wire  pad_dvsi_cfg3   , //fmc_la_p[11], //pad_dvsi_cfg3   ,
+   inout wire  pad_dvsi_cfg4   , //fmc_la_p[12], //pad_dvsi_cfg4   ,
+   inout wire  pad_dvsi_cfg5   , //fmc_la_p[13], //pad_dvsi_cfg5   ,
+   inout wire  pad_dvsi_cfg6   , //fmc_la_p[14], //pad_dvsi_cfg6   ,
+   inout wire  pad_dvsi_cfg7   , //fmc_la_p[15], //pad_dvsi_cfg7   ,
+   inout wire  pad_dvsi_xydata0, //fmc_la_p[16], //pad_dvsi_xydata0,
+   inout wire  pad_dvsi_xydata1, //fmc_la_p[17], //pad_dvsi_xydata1,
+   inout wire  pad_dvsi_xydata2, //fmc_la_p[18], //pad_dvsi_xydata2,
+   inout wire  pad_dvsi_xydata3, //fmc_la_p[19], //pad_dvsi_xydata3,
+   inout wire  pad_dvsi_xydata4, //fmc_la_p[20], //pad_dvsi_xydata4,
+   inout wire  pad_dvsi_xydata5, //fmc_la_p[21], //pad_dvsi_xydata5,
+   inout wire  pad_dvsi_xydata6, //fmc_la_p[22], //pad_dvsi_xydata6,
+   inout wire  pad_dvsi_xydata7, //fmc_la_p[23], //pad_dvsi_xydata7,
+   inout wire  pad_dvsi_on0    , //fmc_la_p[24], //pad_dvsi_on0    ,
+   inout wire  pad_dvsi_on1    , //fmc_la_p[25], //pad_dvsi_on1    ,
+   inout wire  pad_dvsi_on2    , //fmc_la_p[26], //pad_dvsi_on2    ,
+   inout wire  pad_dvsi_on3    , //fmc_la_p[27], //pad_dvsi_on3    ,
+   inout wire  pad_dvsi_off0   , //fmc_la_p[28], //pad_dvsi_off0   ,
+   inout wire  pad_dvsi_off1   , //fmc_la_p[29], //pad_dvsi_off1   ,
+   inout wire  pad_dvsi_off2   , //fmc_la_p[30], //pad_dvsi_off2   ,
+   inout wire  pad_dvsi_off3   , //fmc_la_p[31], //pad_dvsi_off3   ,
+
    input wire  pad_reset_n,
    inout wire  pad_bootsel,
 
@@ -82,6 +116,73 @@ module xilinx_pulpissimo
   localparam USE_HWPE = 0;
 
   wire        ref_clk;
+
+  //wire pad_dvsi_asa     ;
+  //wire pad_dvsi_are     ;
+  //wire pad_dvsi_asy     ;
+  //wire pad_dvsi_ynrst   ;
+  //wire pad_dvsi_yclk    ;
+  //wire pad_dvsi_sxy     ;
+  //wire pad_dvsi_xclk    ;
+  //wire pad_dvsi_xnrst   ;
+  //wire pad_dvsi_cfg0    ;
+  //wire pad_dvsi_cfg1    ;
+  //wire pad_dvsi_cfg2    ;
+  //wire pad_dvsi_cfg3    ;
+  //wire pad_dvsi_cfg4    ;
+  //wire pad_dvsi_cfg5    ;
+  //wire pad_dvsi_cfg6    ;
+  //wire pad_dvsi_cfg7    ;
+  //wire pad_dvsi_xydata0 ;
+  //wire pad_dvsi_xydata1 ;
+  //wire pad_dvsi_xydata2 ;
+  //wire pad_dvsi_xydata3 ;
+  //wire pad_dvsi_xydata4 ;
+  //wire pad_dvsi_xydata5 ;
+  //wire pad_dvsi_xydata6 ;
+  //wire pad_dvsi_xydata7 ;
+  //wire pad_dvsi_on0     ;
+  //wire pad_dvsi_on1     ;
+  //wire pad_dvsi_on2     ;
+  //wire pad_dvsi_on3     ;
+  //wire pad_dvsi_off0    ;
+  //wire pad_dvsi_off1    ;
+  //wire pad_dvsi_off2    ;
+  //wire pad_dvsi_off3    ;
+
+  //assign fmc_la_p[0]     = pad_dvsi_asa     ;
+  //assign fmc_la_p[1]     = pad_dvsi_are     ;
+  //assign fmc_la_p[2]     = pad_dvsi_asy     ;
+  //assign fmc_la_p[3]     = pad_dvsi_ynrst   ;
+  //assign fmc_la_p[4]     = pad_dvsi_yclk    ;
+  //assign fmc_la_p[5]     = pad_dvsi_sxy     ;
+  //assign fmc_la_p[6]     = pad_dvsi_xclk    ;
+  //assign fmc_la_p[7]     = pad_dvsi_xnrst   ;
+  //assign fmc_la_p[8]     = pad_dvsi_cfg0    ;
+  //assign fmc_la_p[9]     = pad_dvsi_cfg1    ;
+  //assign fmc_la_p[10]    = pad_dvsi_cfg2    ;
+  //assign fmc_la_p[11]    = pad_dvsi_cfg3    ;
+  //assign fmc_la_p[12]    = pad_dvsi_cfg4    ;
+  //assign fmc_la_p[13]    = pad_dvsi_cfg5    ;
+  //assign fmc_la_p[14]    = pad_dvsi_cfg6    ;
+  //assign fmc_la_p[15]    = pad_dvsi_cfg7    ;
+  //assign fmc_la_p[16]    = pad_dvsi_xydata0 ;
+  //assign fmc_la_p[17]    = pad_dvsi_xydata1 ;
+  //assign fmc_la_p[18]    = pad_dvsi_xydata2 ;
+  //assign fmc_la_p[19]    = pad_dvsi_xydata3 ;
+  //assign fmc_la_p[20]    = pad_dvsi_xydata4 ;
+  //assign fmc_la_p[21]    = pad_dvsi_xydata5 ;
+  //assign fmc_la_p[22]    = pad_dvsi_xydata6 ;
+  //assign fmc_la_p[23]    = pad_dvsi_xydata7 ;
+  //assign fmc_la_p[24]    = pad_dvsi_on0     ;
+  //assign fmc_la_p[25]    = pad_dvsi_on1     ;
+  //assign fmc_la_p[26]    = pad_dvsi_on2     ;
+  //assign fmc_la_p[27]    = pad_dvsi_on3     ;
+  //assign fmc_la_p[28]    = pad_dvsi_off0    ;
+  //assign fmc_la_p[29]    = pad_dvsi_off1    ;
+  //assign fmc_la_p[30]    = pad_dvsi_off2    ;
+  //assign fmc_la_p[31]    = pad_dvsi_off3    ;
+
 
 
   //Differential to single ended clock conversion
@@ -135,6 +236,40 @@ module xilinx_pulpissimo
        .pad_i2s0_ws(oled_dc_o),
        .pad_i2s0_sdi(oled_vbat_o),
        .pad_i2s1_sdi(oled_vdd_o),
+       /* DVSI */
+       .pad_dvsi_asa(pad_dvsi_asa),
+       .pad_dvsi_are(pad_dvsi_are),
+       .pad_dvsi_asy(pad_dvsi_asy),
+       .pad_dvsi_ynrst(pad_dvsi_ynrst),
+       .pad_dvsi_yclk(pad_dvsi_yclk),
+       .pad_dvsi_sxy(pad_dvsi_sxy),
+       .pad_dvsi_xclk(pad_dvsi_xclk),
+       .pad_dvsi_xnrst(pad_dvsi_xnrst),
+       .pad_dvsi_cfg0(pad_dvsi_cfg0),
+       .pad_dvsi_cfg1(pad_dvsi_cfg1),
+       .pad_dvsi_cfg2(pad_dvsi_cfg2),
+       .pad_dvsi_cfg3(pad_dvsi_cfg3),
+       .pad_dvsi_cfg4(pad_dvsi_cfg4),
+       .pad_dvsi_cfg5(pad_dvsi_cfg5),
+       .pad_dvsi_cfg6(pad_dvsi_cfg6),
+       .pad_dvsi_cfg7(pad_dvsi_cfg7),
+       .pad_dvsi_xydata0(pad_dvsi_xydata0),
+       .pad_dvsi_xydata1(pad_dvsi_xydata1),
+       .pad_dvsi_xydata2(pad_dvsi_xydata2),
+       .pad_dvsi_xydata3(pad_dvsi_xydata3),
+       .pad_dvsi_xydata4(pad_dvsi_xydata4),
+       .pad_dvsi_xydata5(pad_dvsi_xydata5),
+       .pad_dvsi_xydata6(pad_dvsi_xydata6),
+       .pad_dvsi_xydata7(pad_dvsi_xydata7),
+       .pad_dvsi_on0(pad_dvsi_on0),
+       .pad_dvsi_on1(pad_dvsi_on1),
+       .pad_dvsi_on2(pad_dvsi_on2),
+       .pad_dvsi_on3(pad_dvsi_on3),
+       .pad_dvsi_off0(pad_dvsi_off0),
+       .pad_dvsi_off1(pad_dvsi_off1),
+       .pad_dvsi_off2(pad_dvsi_off2),
+       .pad_dvsi_off3(pad_dvsi_off3),
+
        .pad_reset_n(pad_reset_n),
        .pad_jtag_tck(pad_jtag_tck),
        .pad_jtag_tdi(pad_jtag_tdi),
@@ -142,7 +277,7 @@ module xilinx_pulpissimo
        .pad_jtag_tms(pad_jtag_tms),
        .pad_jtag_trst(pad_jtag_trst),
        .pad_xtal_in(ref_clk),
-       .pad_bootsel()
+       .pad_bootsel(pad_bootsel)
        );
 
 endmodule

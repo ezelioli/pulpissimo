@@ -60,6 +60,7 @@ module pad_frame
         input logic             oe_uart_rx_i     ,
         input logic             oe_uart_tx_i     ,
 
+
         // INPUTS SIGNALS TO THE PADS
         input logic             out_sdio_clk_i  ,
         input logic             out_sdio_cmd_i   ,
@@ -93,6 +94,24 @@ module pad_frame
         input logic             out_i2c0_scl_i   ,
         input logic             out_uart_rx_i    ,
         input logic             out_uart_tx_i    ,
+        /* DVSI */
+        input logic             out_dvsi_asa_i   ,
+        input logic             out_dvsi_are_i   ,
+        input logic             out_dvsi_asy_i   ,
+        input logic             out_dvsi_ynrst_i ,
+        input logic             out_dvsi_yclk_i  ,
+        input logic             out_dvsi_sxy_i   ,
+        input logic             out_dvsi_xclk_i  ,
+        input logic             out_dvsi_xnrst_i ,
+        input logic             out_dvsi_cfg0_i  ,
+        input logic             out_dvsi_cfg1_i  ,
+        input logic             out_dvsi_cfg2_i  ,
+        input logic             out_dvsi_cfg3_i  ,
+        input logic             out_dvsi_cfg4_i  ,
+        input logic             out_dvsi_cfg5_i  ,
+        input logic             out_dvsi_cfg6_i  ,
+        input logic             out_dvsi_cfg7_i  ,
+
 
         // OUTPUT SIGNALS FROM THE PADS
         output logic            in_sdio_clk_o   ,
@@ -127,6 +146,24 @@ module pad_frame
         output logic            in_i2c0_scl_o    ,
         output logic            in_uart_rx_o     ,
         output logic            in_uart_tx_o     ,
+        /* DVSI */
+        output logic            in_dvsi_xydata0_o,
+        output logic            in_dvsi_xydata1_o,
+        output logic            in_dvsi_xydata2_o,
+        output logic            in_dvsi_xydata3_o,
+        output logic            in_dvsi_xydata4_o,
+        output logic            in_dvsi_xydata5_o,
+        output logic            in_dvsi_xydata6_o,
+        output logic            in_dvsi_xydata7_o,
+        output logic            in_dvsi_on0_o    ,
+        output logic            in_dvsi_on1_o    ,
+        output logic            in_dvsi_on2_o    ,
+        output logic            in_dvsi_on3_o    ,
+        output logic            in_dvsi_off0_o   ,
+        output logic            in_dvsi_off1_o   ,
+        output logic            in_dvsi_off2_o   ,
+        output logic            in_dvsi_off3_o   ,
+
 
         output logic            bootsel_o        ,
 
@@ -163,6 +200,41 @@ module pad_frame
         inout wire              pad_i2c0_scl     ,
         inout wire              pad_uart_rx      ,
         inout wire              pad_uart_tx      ,
+        /* DVSI */
+        inout wire              pad_dvsi_asa     ,
+        inout wire              pad_dvsi_are     ,
+        inout wire              pad_dvsi_asy     ,
+        inout wire              pad_dvsi_ynrst   ,
+        inout wire              pad_dvsi_yclk    ,
+        inout wire              pad_dvsi_sxy     ,
+        inout wire              pad_dvsi_xclk    ,
+        inout wire              pad_dvsi_xnrst   ,
+        inout wire              pad_dvsi_cfg0    ,
+        inout wire              pad_dvsi_cfg1    ,
+        inout wire              pad_dvsi_cfg2    ,
+        inout wire              pad_dvsi_cfg3    ,
+        inout wire              pad_dvsi_cfg4    ,
+        inout wire              pad_dvsi_cfg5    ,
+        inout wire              pad_dvsi_cfg6    ,
+        inout wire              pad_dvsi_cfg7    ,
+        inout wire              pad_dvsi_xydata0 ,
+        inout wire              pad_dvsi_xydata1 ,
+        inout wire              pad_dvsi_xydata2 ,
+        inout wire              pad_dvsi_xydata3 ,
+        inout wire              pad_dvsi_xydata4 ,
+        inout wire              pad_dvsi_xydata5 ,
+        inout wire              pad_dvsi_xydata6 ,
+        inout wire              pad_dvsi_xydata7 ,
+        inout wire              pad_dvsi_on0     ,
+        inout wire              pad_dvsi_on1     ,
+        inout wire              pad_dvsi_on2     ,
+        inout wire              pad_dvsi_on3     ,
+        inout wire              pad_dvsi_off0    ,
+        inout wire              pad_dvsi_off1    ,
+        inout wire              pad_dvsi_off2    ,
+        inout wire              pad_dvsi_off3    ,
+
+
 
         inout wire              pad_reset_n      ,
         inout wire              pad_bootsel      ,
@@ -211,6 +283,40 @@ module pad_frame
     pad_functional_pu padinst_i2c0_sda   (.OEN(~oe_i2c0_sda_i  ), .I(out_i2c0_sda_i  ), .O(in_i2c0_sda_o  ), .PAD(pad_i2c0_sda  ), .PEN(~pad_cfg_i[7][0] ) );
     pad_functional_pu padinst_i2c0_scl   (.OEN(~oe_i2c0_scl_i  ), .I(out_i2c0_scl_i  ), .O(in_i2c0_scl_o  ), .PAD(pad_i2c0_scl  ), .PEN(~pad_cfg_i[8][0] ) );
 
+    /* DVSI */
+    pad_functional_input padinst_dvsi_xydata0  ( .O(in_dvsi_xydata0_o), .PAD(pad_dvsi_xydata0) );
+    pad_functional_input padinst_dvsi_xydata1  ( .O(in_dvsi_xydata1_o), .PAD(pad_dvsi_xydata1) );
+    pad_functional_input padinst_dvsi_xydata2  ( .O(in_dvsi_xydata2_o), .PAD(pad_dvsi_xydata2) );
+    pad_functional_input padinst_dvsi_xydata3  ( .O(in_dvsi_xydata3_o), .PAD(pad_dvsi_xydata3) );
+    pad_functional_input padinst_dvsi_xydata4  ( .O(in_dvsi_xydata4_o), .PAD(pad_dvsi_xydata4) );
+    pad_functional_input padinst_dvsi_xydata5  ( .O(in_dvsi_xydata5_o), .PAD(pad_dvsi_xydata5) );
+    pad_functional_input padinst_dvsi_xydata6  ( .O(in_dvsi_xydata6_o), .PAD(pad_dvsi_xydata6) );
+    pad_functional_input padinst_dvsi_xydata7  ( .O(in_dvsi_xydata7_o), .PAD(pad_dvsi_xydata7) );
+    pad_functional_input padinst_dvsi_on0      ( .O(in_dvsi_on0_o    ), .PAD(pad_dvsi_on0    ) );
+    pad_functional_input padinst_dvsi_on1      ( .O(in_dvsi_on1_o    ), .PAD(pad_dvsi_on1    ) );
+    pad_functional_input padinst_dvsi_on2      ( .O(in_dvsi_on2_o    ), .PAD(pad_dvsi_on2    ) );
+    pad_functional_input padinst_dvsi_on3      ( .O(in_dvsi_on3_o    ), .PAD(pad_dvsi_on3    ) );
+    pad_functional_input padinst_dvsi_off0     ( .O(in_dvsi_off0_o   ), .PAD(pad_dvsi_off0   ) );
+    pad_functional_input padinst_dvsi_off1     ( .O(in_dvsi_off1_o   ), .PAD(pad_dvsi_off1   ) );
+    pad_functional_input padinst_dvsi_off2     ( .O(in_dvsi_off2_o   ), .PAD(pad_dvsi_off2   ) );
+    pad_functional_input padinst_dvsi_off3     ( .O(in_dvsi_off3_o   ), .PAD(pad_dvsi_off3   ) );
+
+    pad_functional_output padinst_dvsi_asa     ( .I(out_dvsi_asa_i   ), .PAD(pad_dvsi_asa   ) );
+    pad_functional_output padinst_dvsi_ara     ( .I(out_dvsi_are_i   ), .PAD(pad_dvsi_are   ) );
+    pad_functional_output padinst_dvsi_asy     ( .I(out_dvsi_asy_i   ), .PAD(pad_dvsi_asy   ) );
+    pad_functional_output padinst_dvsi_ynrst   ( .I(out_dvsi_ynrst_i ), .PAD(pad_dvsi_ynrst ) );
+    pad_functional_output padinst_dvsi_yclk    ( .I(out_dvsi_yclk_i  ), .PAD(pad_dvsi_yclk  ) );
+    pad_functional_output padinst_dvsi_sxy     ( .I(out_dvsi_sxy_i   ), .PAD(pad_dvsi_sxy   ) );
+    pad_functional_output padinst_dvsi_xnrst   ( .I(out_dvsi_xnrst_i ), .PAD(pad_dvsi_xnrst ) );
+    pad_functional_output padinst_dvsi_xclk    ( .I(out_dvsi_xclk_i  ), .PAD(pad_dvsi_xclk  ) );
+    pad_functional_output padinst_dvsi_cfg0    ( .I(out_dvsi_cfg0_i  ), .PAD(pad_dvsi_cfg0  ) );
+    pad_functional_output padinst_dvsi_cfg1    ( .I(out_dvsi_cfg1_i  ), .PAD(pad_dvsi_cfg1  ) );
+    pad_functional_output padinst_dvsi_cfg2    ( .I(out_dvsi_cfg2_i  ), .PAD(pad_dvsi_cfg2  ) );
+    pad_functional_output padinst_dvsi_cfg3    ( .I(out_dvsi_cfg3_i  ), .PAD(pad_dvsi_cfg3  ) );
+    pad_functional_output padinst_dvsi_cfg4    ( .I(out_dvsi_cfg4_i  ), .PAD(pad_dvsi_cfg4  ) );
+    pad_functional_output padinst_dvsi_cfg5    ( .I(out_dvsi_cfg5_i  ), .PAD(pad_dvsi_cfg5  ) );
+    pad_functional_output padinst_dvsi_cfg6    ( .I(out_dvsi_cfg6_i  ), .PAD(pad_dvsi_cfg6  ) );
+    pad_functional_output padinst_dvsi_cfg7    ( .I(out_dvsi_cfg7_i  ), .PAD(pad_dvsi_cfg7  ) );
 
     pad_functional_pu padinst_bootsel    (.OEN(1'b1            ), .I(                ), .O(bootsel_o      ), .PAD(pad_bootsel   ), .PEN(1'b1             ) );
 
