@@ -41,11 +41,16 @@ set CLK_HALFPERIOD_NS [expr ${FC_CLK_PERIOD_NS} / 2.0]
 add_files -norecurse $FPGA_RTL/xilinx_pulpissimo.v
 
 # Add Xilinx IPs
-read_ip $FPGA_IPS/xilinx_clk_mngr/ip/xilinx_clk_mngr.xci
-read_ip $FPGA_IPS/xilinx_slow_clk_mngr/ip/xilinx_slow_clk_mngr.xci
-read_ip $FPGA_IPS/xilinx_interleaved_ram/ip/xilinx_interleaved_ram.xci
-read_ip $FPGA_IPS/xilinx_private_ram/ip/xilinx_private_ram.xci
-read_ip $FPGA_IPS/xilinx_generic_ram/ip/xilinx_generic_ram.xci
+read_ip $FPGA_IPS/xilinx_clk_mngr/xilinx_clk_mngr.srcs/sources_1/ip/xilinx_clk_mngr/xilinx_clk_mngr.xci
+read_ip $FPGA_IPS/xilinx_slow_clk_mngr/xilinx_slow_clk_mngr.srcs/sources_1/ip/xilinx_slow_clk_mngr/xilinx_slow_clk_mngr.xci
+read_ip $FPGA_IPS/xilinx_interleaved_ram/xilinx_interleaved_ram.srcs/sources_1/ip/xilinx_interleaved_ram/xilinx_interleaved_ram.xci
+read_ip $FPGA_IPS/xilinx_private_ram/xilinx_private_ram.srcs/sources_1/ip/xilinx_private_ram/xilinx_private_ram.xci
+read_ip $FPGA_IPS/xilinx_generic_ram/xilinx_generic_ram.srcs/sources_1/ip/xilinx_generic_ram/xilinx_generic_ram.xci
+# read_ip $FPGA_IPS/xilinx_clk_mngr/ip/xilinx_clk_mngr.xci
+# read_ip $FPGA_IPS/xilinx_slow_clk_mngr/ip/xilinx_slow_clk_mngr.xci
+# read_ip $FPGA_IPS/xilinx_interleaved_ram/ip/xilinx_interleaved_ram.xci
+# read_ip $FPGA_IPS/xilinx_private_ram/ip/xilinx_private_ram.xci
+# read_ip $FPGA_IPS/xilinx_generic_ram/ip/xilinx_generic_ram.xci
 
 # Add wrappers and xilinx specific techcells
 add_files -norecurse $FPGA_RTL/fpga_clk_gen.sv
