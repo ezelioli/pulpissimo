@@ -1,2 +1,3 @@
 overrides:
   axi: { git: "https://github.com/pulp-platform/axi.git", version: 0.27.0 }
+  udma_hyper: { git: "git@iis-git.ee.ethz.ch:ezelioli/udma_hyper.git", rev: "devel"}
