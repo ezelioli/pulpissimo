@@ -102,11 +102,12 @@ module xilinx_pulpissimo
    inout wire  pad_dvsi_off3   , //fmc_la_p[31], //pad_dvsi_off3   ,
 
    input wire  pad_reset_n,
-   inout wire  pad_bootsel,
+   //inout wire  pad_bootsel,
+   input wire pad_bootsel,
 
    input wire  pad_jtag_tck,
    input wire  pad_jtag_tdi,
-   output wire pad_jtag_tdo,
+   inout wire pad_jtag_tdo,
    input wire  pad_jtag_tms,
    input wire  pad_jtag_trst
  );

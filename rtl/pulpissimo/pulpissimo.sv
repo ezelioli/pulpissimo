@@ -86,14 +86,14 @@ module pulpissimo #(
   inout wire pad_dvsi_off2,
   inout wire pad_dvsi_off3,
 
-  inout wire pad_reset_n,
-  inout wire pad_bootsel,
+  input wire pad_reset_n,
+  input wire pad_bootsel,
 
-  inout wire pad_jtag_tck,
-  inout wire pad_jtag_tdi,
+  input wire pad_jtag_tck,
+  input wire pad_jtag_tdi,
   inout wire pad_jtag_tdo,
-  inout wire pad_jtag_tms,
-  inout wire pad_jtag_trst,
+  input wire pad_jtag_tms,
+  input wire pad_jtag_trst,
 
   inout wire pad_xtal_in
 );
