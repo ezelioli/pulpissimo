@@ -240,7 +240,7 @@ module pad_frame
         input wire              pad_bootsel      ,
         input wire              pad_jtag_tck     ,
         input wire              pad_jtag_tdi     ,
-        inout wire              pad_jtag_tdo     ,
+        output wire              pad_jtag_tdo     ,
         input wire              pad_jtag_tms     ,
         input wire              pad_jtag_trst    ,
         inout wire              pad_xtal_in
@@ -319,13 +319,13 @@ module pad_frame
     pad_functional_output padinst_dvsi_cfg7    ( .I(out_dvsi_cfg7_i  ), .PAD(pad_dvsi_cfg7  ) );
 
     // pad_functional_pu padinst_bootsel    (.OEN(1'b1            ), .I(                ), .O(bootsel_o      ), .PAD(pad_bootsel   ), .PEN(1'b1             ) );
-    pad_functional_input padinst_bootsel    (.O(bootsel_o), .PAD(pad_bootsel));
-    pad_functional_input padinst_jtag_tck   (.O(jtag_tck_o), .PAD(pad_jtag_tck));
-    pad_functional_input padinst_jtag_tdi   (.O(jtag_tdi_o), .PAD(pad_jtag_tdi));
-    pad_functional_input padinst_jtag_tms   (.O(jtag_tms_o), .PAD(pad_jtag_tms));
-    pad_functional_input padinst_jtag_trst   (.O(jtag_trst_o), .PAD(pad_jtag_trst));
+    // pad_functional_input padinst_bootsel    (.O(bootsel_o), .PAD(pad_bootsel));
+    // pad_functional_input padinst_jtag_tck   (.O(jtag_tck_o), .PAD(pad_jtag_tck));
+    // pad_functional_input padinst_jtag_tdi   (.O(jtag_tdi_o), .PAD(pad_jtag_tdi));
+    // pad_functional_input padinst_jtag_tms   (.O(jtag_tms_o), .PAD(pad_jtag_tms));
+    // pad_functional_input padinst_jtag_trst   (.O(jtag_trst_o), .PAD(pad_jtag_trst));
 
-    pad_functional_output padinst_jtag_tdo (.I(jtag_tdo_i), .PAD(pad_jtag_tdo));
+    // pad_functional_output padinst_jtag_tdo (.I(jtag_tdo_i), .PAD(pad_jtag_tdo));
 
     pad_functional_input padinst_rstn   (.O(rstn_o), .PAD(pad_reset_n));
 
@@ -344,11 +344,11 @@ module pad_frame
   //assign rstn_o = pad_reset_n;
 
   //JTAG signals
-  //assign pad_jtag_tdo = jtag_tdo_i;
-  //assign jtag_trst_o = pad_jtag_trst;
-  //assign jtag_tms_o = pad_jtag_tms;
-  //assign jtag_tck_o = pad_jtag_tck;
-  //assign jtag_tdi_o = pad_jtag_tdi;
+  assign pad_jtag_tdo = jtag_tdo_i;
+  assign jtag_trst_o = pad_jtag_trst;
+  assign jtag_tms_o = pad_jtag_tms;
+  assign jtag_tck_o = pad_jtag_tck;
+  assign jtag_tdi_o = pad_jtag_tdi;
   //assign bootsel_o = pad_bootsel;
 // `endif
 

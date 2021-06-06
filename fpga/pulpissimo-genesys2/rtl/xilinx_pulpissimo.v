@@ -107,7 +107,7 @@ module xilinx_pulpissimo
 
    input wire  pad_jtag_tck,
    input wire  pad_jtag_tdi,
-   inout wire pad_jtag_tdo,
+   output wire pad_jtag_tdo,
    input wire  pad_jtag_tms,
    input wire  pad_jtag_trst
  );
