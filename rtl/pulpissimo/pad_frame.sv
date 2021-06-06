@@ -201,38 +201,38 @@ module pad_frame
         inout wire              pad_uart_rx      ,
         inout wire              pad_uart_tx      ,
         /* DVSI */
-        inout wire              pad_dvsi_asa     ,
-        inout wire              pad_dvsi_are     ,
-        inout wire              pad_dvsi_asy     ,
-        inout wire              pad_dvsi_ynrst   ,
-        inout wire              pad_dvsi_yclk    ,
-        inout wire              pad_dvsi_sxy     ,
-        inout wire              pad_dvsi_xclk    ,
-        inout wire              pad_dvsi_xnrst   ,
-        inout wire              pad_dvsi_cfg0    ,
-        inout wire              pad_dvsi_cfg1    ,
-        inout wire              pad_dvsi_cfg2    ,
-        inout wire              pad_dvsi_cfg3    ,
-        inout wire              pad_dvsi_cfg4    ,
-        inout wire              pad_dvsi_cfg5    ,
-        inout wire              pad_dvsi_cfg6    ,
-        inout wire              pad_dvsi_cfg7    ,
-        inout wire              pad_dvsi_xydata0 ,
-        inout wire              pad_dvsi_xydata1 ,
-        inout wire              pad_dvsi_xydata2 ,
-        inout wire              pad_dvsi_xydata3 ,
-        inout wire              pad_dvsi_xydata4 ,
-        inout wire              pad_dvsi_xydata5 ,
-        inout wire              pad_dvsi_xydata6 ,
-        inout wire              pad_dvsi_xydata7 ,
-        inout wire              pad_dvsi_on0     ,
-        inout wire              pad_dvsi_on1     ,
-        inout wire              pad_dvsi_on2     ,
-        inout wire              pad_dvsi_on3     ,
-        inout wire              pad_dvsi_off0    ,
-        inout wire              pad_dvsi_off1    ,
-        inout wire              pad_dvsi_off2    ,
-        inout wire              pad_dvsi_off3    ,
+        output wire              pad_dvsi_asa     ,
+        output wire              pad_dvsi_are     ,
+        output wire              pad_dvsi_asy     ,
+        output wire              pad_dvsi_ynrst   ,
+        output wire              pad_dvsi_yclk    ,
+        output wire              pad_dvsi_sxy     ,
+        output wire              pad_dvsi_xclk    ,
+        output wire              pad_dvsi_xnrst   ,
+        output wire              pad_dvsi_cfg0    ,
+        output wire              pad_dvsi_cfg1    ,
+        output wire              pad_dvsi_cfg2    ,
+        output wire              pad_dvsi_cfg3    ,
+        output wire              pad_dvsi_cfg4    ,
+        output wire              pad_dvsi_cfg5    ,
+        output wire              pad_dvsi_cfg6    ,
+        output wire              pad_dvsi_cfg7    ,
+        input  wire              pad_dvsi_xydata0 ,
+        input  wire              pad_dvsi_xydata1 ,
+        input  wire              pad_dvsi_xydata2 ,
+        input  wire              pad_dvsi_xydata3 ,
+        input  wire              pad_dvsi_xydata4 ,
+        input  wire              pad_dvsi_xydata5 ,
+        input  wire              pad_dvsi_xydata6 ,
+        input  wire              pad_dvsi_xydata7 ,
+        input  wire              pad_dvsi_on0     ,
+        input  wire              pad_dvsi_on1     ,
+        input  wire              pad_dvsi_on2     ,
+        input  wire              pad_dvsi_on3     ,
+        input  wire              pad_dvsi_off0    ,
+        input  wire              pad_dvsi_off1    ,
+        input  wire              pad_dvsi_off2    ,
+        input  wire              pad_dvsi_off3    ,
 
 
 
@@ -318,14 +318,14 @@ module pad_frame
     pad_functional_output padinst_dvsi_cfg6    ( .I(out_dvsi_cfg6_i  ), .PAD(pad_dvsi_cfg6  ) );
     pad_functional_output padinst_dvsi_cfg7    ( .I(out_dvsi_cfg7_i  ), .PAD(pad_dvsi_cfg7  ) );
 
-    // pad_functional_pu padinst_bootsel    (.OEN(1'b1            ), .I(                ), .O(bootsel_o      ), .PAD(pad_bootsel   ), .PEN(1'b1             ) );
-    // pad_functional_input padinst_bootsel    (.O(bootsel_o), .PAD(pad_bootsel));
-    // pad_functional_input padinst_jtag_tck   (.O(jtag_tck_o), .PAD(pad_jtag_tck));
-    // pad_functional_input padinst_jtag_tdi   (.O(jtag_tdi_o), .PAD(pad_jtag_tdi));
-    // pad_functional_input padinst_jtag_tms   (.O(jtag_tms_o), .PAD(pad_jtag_tms));
-    // pad_functional_input padinst_jtag_trst   (.O(jtag_trst_o), .PAD(pad_jtag_trst));
+    //pad_functional_pu padinst_bootsel    (.OEN(1'b1            ), .I(                ), .O(bootsel_o      ), .PAD(pad_bootsel   ), .PEN(1'b1             ) );
+    pad_functional_input padinst_bootsel    (.O(bootsel_o), .PAD(pad_bootsel));
+    pad_functional_input padinst_jtag_tck   (.O(jtag_tck_o), .PAD(pad_jtag_tck));
+    pad_functional_input padinst_jtag_tdi   (.O(jtag_tdi_o), .PAD(pad_jtag_tdi));
+    pad_functional_input padinst_jtag_tms   (.O(jtag_tms_o), .PAD(pad_jtag_tms));
+    pad_functional_input padinst_jtag_trst   (.O(jtag_trst_o), .PAD(pad_jtag_trst));
 
-    // pad_functional_output padinst_jtag_tdo (.I(jtag_tdo_i), .PAD(pad_jtag_tdo));
+    pad_functional_output padinst_jtag_tdo (.I(jtag_tdo_i), .PAD(pad_jtag_tdo));
 
     pad_functional_input padinst_rstn   (.O(rstn_o), .PAD(pad_reset_n));
 
@@ -344,11 +344,11 @@ module pad_frame
   //assign rstn_o = pad_reset_n;
 
   //JTAG signals
-  assign pad_jtag_tdo = jtag_tdo_i;
-  assign jtag_trst_o = pad_jtag_trst;
-  assign jtag_tms_o = pad_jtag_tms;
-  assign jtag_tck_o = pad_jtag_tck;
-  assign jtag_tdi_o = pad_jtag_tdi;
+  // assign pad_jtag_tdo = jtag_tdo_i;
+  // assign jtag_trst_o = pad_jtag_trst;
+  // assign jtag_tms_o = pad_jtag_tms;
+  // assign jtag_tck_o = pad_jtag_tck;
+  // assign jtag_tdi_o = pad_jtag_tdi;
   //assign bootsel_o = pad_bootsel;
 // `endif
 
